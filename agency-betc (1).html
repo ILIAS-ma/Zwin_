@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVÆ — Creative Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F3;--ink:#0E0E0E;--grey:#7c7c76;--line:rgba(14,14,14,.14);
+    --blue:#2E2BFF;--lime:#CCFF00;--pink:#FF2E8B;--orange:#FF5A00;--violet:#6A2EFF;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;overflow-x:hidden}
+  ::selection{background:var(--blue);color:#fff}
+  a{color:inherit;text-decoration:none}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.92}
+  .mono{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+  .reduced *{animation:none!important;transition:none!important}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;width:100%;padding:22px 30px;display:flex;justify-content:space-between;align-items:center;z-index:300;mix-blend-mode:difference;color:#fff}
+  nav .logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.04em}
+  nav .links{display:flex;gap:26px;align-items:center}
+  nav .links a{position:relative;font-size:15px;font-weight:500}
+  nav .links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1.5px;background:#fff;transition:width .4s var(--ease)}
+  nav .links a:hover::after{width:100%}
+  .reduce-btn{font-family:'Space Mono',monospace;text-transform:uppercase;font-size:10px;letter-spacing:.08em;border:1px solid #fff;border-radius:30px;padding:8px 14px;background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;gap:8px}
+  .reduce-btn .ic{width:8px;height:8px;border-radius:50%;background:#fff;animation:spin 3s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .reduced .reduce-btn .ic{background:transparent;border:1px solid #fff}
+
+  /* HERO CAROUSEL */
+  #hero{position:relative;height:100vh;overflow:hidden}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s var(--ease);display:flex;align-items:center;justify-content:center}
+  .slide.on{opacity:1}
+  .slide .art{position:absolute;inset:0;overflow:hidden}
+  .slide .art::before{content:'';position:absolute;inset:0;transform:scale(1.15);transition:transform 6s linear}
+  .slide.on .art::before{transform:scale(1)}
+  .s1 .art::before{background:radial-gradient(120% 120% at 70% 20%,var(--orange),var(--pink) 55%,#7a0030)}
+  .s2 .art::before{background:radial-gradient(120% 120% at 30% 80%,var(--lime),#3fae00 60%,#10330a)}
+  .s3 .art::before{background:radial-gradient(120% 100% at 50% 30%,var(--blue),var(--violet) 70%,#0d0066)}
+  .s4 .art::before{background:radial-gradient(120% 120% at 80% 70%,#ffd2e6,var(--pink) 55%,#54001f)}
+  .s5 .art::before{background:radial-gradient(130% 130% at 20% 20%,#fff,#bcbcbc 40%,#0E0E0E)}
+  .s6 .art::before{background:radial-gradient(120% 120% at 60% 80%,#ffe28a,var(--orange) 60%,#5e1f00)}
+  .slide .word{position:relative;z-index:2;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(60px,17vw,300px);letter-spacing:-.05em;color:#fff;mix-blend-mode:overlay;text-transform:uppercase;line-height:.8;text-align:center}
+  .s5 .word{color:#0E0E0E;mix-blend-mode:normal}
+  .hero-cap{position:absolute;left:30px;bottom:34px;z-index:5;color:#fff;display:flex;align-items:flex-end;gap:20px}
+  .s5-cap-dark{}
+  .hero-cap .idx{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:40px;line-height:.8}
+  .hero-cap .info b{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;display:block;letter-spacing:-.02em}
+  .hero-cap .info span{font-size:13px;opacity:.85}
+  .hero-right{position:absolute;right:30px;bottom:34px;z-index:5;color:#fff;text-align:right}
+  .hero-bars{position:absolute;top:0;left:0;width:100%;display:flex;gap:6px;padding:88px 30px 0;z-index:5}
+  .hero-bars .b{flex:1;height:2px;background:rgba(255,255,255,.35);overflow:hidden}
+  .hero-bars .b i{display:block;height:100%;width:0;background:#fff}
+  .hero-bars .b.active i{animation:fill 3s linear forwards}
+  @keyframes fill{to{width:100%}}
+
+  /* MANIFESTO */
+  .manifesto{padding:140px 30px;border-bottom:1px solid var(--ink)}
+  .manifesto p{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,5.5vw,86px);line-height:1.02;letter-spacing:-.03em;max-width:1300px}
+  .manifesto .hl{color:var(--blue)}
+  .manifesto .small{margin-top:40px;max-width:520px;font-size:17px;line-height:1.6;color:var(--grey)}
+
+  /* MARQUEE */
+  .marquee{border-bottom:1px solid var(--ink);overflow:hidden;white-space:nowrap;padding:18px 0;background:var(--ink);color:var(--bg)}
+  .marquee .track{display:inline-block;will-change:transform}
+  .marquee span{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(22px,3.4vw,44px);text-transform:uppercase;letter-spacing:-.01em;padding:0 26px}
+  .marquee .dot{color:var(--lime)}
+
+  /* WORK */
+  .sec-head{display:flex;justify-content:space-between;align-items:baseline;padding:90px 30px 40px}
+  .sec-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,7vw,110px);letter-spacing:-.04em;text-transform:uppercase;line-height:.86}
+  .work{padding:0 30px 40px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .case{position:relative;border-radius:0;overflow:hidden;aspect-ratio:16/11;display:flex;align-items:flex-end;padding:28px;cursor:pointer}
+  .case .bg{position:absolute;inset:0;transition:transform .9s var(--ease)}
+  .case:hover .bg{transform:scale(1.06)}
+  .c1 .bg{background:linear-gradient(135deg,var(--blue),var(--violet))}
+  .c2 .bg{background:linear-gradient(135deg,var(--orange),var(--pink))}
+  .c3 .bg{background:linear-gradient(135deg,var(--lime),#2aa400)}
+  .c4 .bg{background:linear-gradient(135deg,#111,#444)}
+  .c5 .bg{background:linear-gradient(135deg,var(--pink),#ffd2e6)}
+  .c6 .bg{background:linear-gradient(135deg,#ffe28a,var(--orange))}
+  .case .ct{position:relative;z-index:2;color:#fff;width:100%;display:flex;justify-content:space-between;align-items:flex-end}
+  .case.light .ct{color:#0E0E0E}
+  .case .ct h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,3.6vw,52px);letter-spacing:-.03em;line-height:.9}
+  .case .ct .cat{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;opacity:.9}
+  .case .arrow{font-size:34px;transition:transform .5s var(--ease)}
+  .case:hover .arrow{transform:translate(6px,-6px)}
+  .case:first-child,.case:nth-child(4){aspect-ratio:auto;min-height:480px}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .stat{padding:56px 30px;border-right:1px solid var(--ink)}
+  .stat:last-child{border-right:none}
+  .stat .n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(44px,6vw,92px);letter-spacing:-.04em;line-height:.85}
+  .stat .l{margin-top:14px;color:var(--grey)}
+
+  /* BEYOND */
+  .beyond{padding:0 30px 60px}
+  .by-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}
+  .by{border-radius:0;overflow:hidden;min-height:340px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;position:relative;color:#fff}
+  .by1{background:var(--violet)}.by2{background:var(--ink)}.by3{background:var(--blue)}
+  .by .tag{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;opacity:.8}
+  .by h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,2.6vw,38px);letter-spacing:-.02em;line-height:.96}
+
+  /* CAREERS / CTA */
+  .cta{padding:130px 30px;text-align:center;background:var(--lime);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .cta h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(46px,13vw,230px);letter-spacing:-.05em;line-height:.82;text-transform:uppercase}
+  .cta a{display:inline-block;margin-top:46px;padding:22px 54px;background:var(--ink);color:var(--bg);border-radius:50px;font-family:'Space Mono',monospace;text-transform:uppercase;font-size:13px;letter-spacing:.08em;transition:transform .4s var(--ease)}
+  .cta a:hover{transform:translateY(-4px)}
+
+  /* CONTACT */
+  .contact{padding:110px 30px 40px}
+  .contact .row{display:grid;grid-template-columns:1fr 1fr;gap:60px;border-bottom:1px solid var(--ink);padding-bottom:60px;margin-bottom:50px}
+  .contact h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,4.4vw,72px);letter-spacing:-.03em;line-height:.92}
+  .contact .em{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(22px,3vw,46px);letter-spacing:-.02em;border-bottom:2px solid var(--ink);display:inline-block;transition:color .3s}
+  .contact .em:hover{color:var(--blue);border-color:var(--blue)}
+  .contact .offices{display:flex;gap:40px;flex-wrap:wrap;color:var(--grey)}
+  .contact .offices b{display:block;color:var(--ink);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px}
+
+  /* FOOTER */
+  footer{padding:50px 30px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:30px}
+  footer .big{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(50px,16vw,260px);letter-spacing:-.05em;line-height:.78}
+  footer .meta{color:var(--grey);text-align:right}
+  footer .meta a{display:inline-block;margin-left:16px}
+
+  [data-rev]{opacity:0;transform:translateY(40px)}
+  .reduced [data-rev]{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    nav .links a:not(.reduce-btn){display:none}
+    .work,.by-grid{grid-template-columns:1fr;gap:16px}
+    .stats{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:none}.stat{border-bottom:1px solid var(--ink)}
+    .case:first-child,.case:nth-child(4){min-height:auto;aspect-ratio:16/11}
+    .contact .row{grid-template-columns:1fr;gap:30px}
+    .manifesto{padding:90px 24px}
+    nav,.sec-head,.work,.beyond,.contact,.marquee,footer{padding-left:24px;padding-right:24px}
+    .hero-cap .info b{font-size:18px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">NOVÆ</a>
+  <div class="links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#beyond">Beyond</a>
+    <a href="#contact">Contact</a>
+    <button class="reduce-btn" id="reduce"><span class="ic"></span>Reduce motion</button>
+  </div>
+</nav>
+
+<!-- HERO CAROUSEL -->
+<section id="hero">
+  <div class="slide s1 on"><div class="art"></div><div class="word">Lumen</div></div>
+  <div class="slide s2"><div class="art"></div><div class="word">Apex</div></div>
+  <div class="slide s3"><div class="art"></div><div class="word">Orbit</div></div>
+  <div class="slide s4"><div class="art"></div><div class="word">Solstice</div></div>
+  <div class="slide s5"><div class="art"></div><div class="word">Verso</div></div>
+  <div class="slide s6"><div class="art"></div><div class="word">Maison</div></div>
+
+  <div class="hero-bars">
+    <div class="b active"><i></i></div><div class="b"><i></i></div><div class="b"><i></i></div>
+    <div class="b"><i></i></div><div class="b"><i></i></div><div class="b"><i></i></div>
+  </div>
+
+  <div class="hero-cap">
+    <div class="idx" id="idx">01</div>
+    <div class="info"><b id="cap-t">Lumen Finance</b><span id="cap-s">Banking, reimagined — 3D website</span></div>
+  </div>
+  <div class="hero-right mono">Scroll ↓<br>Selected work '23—'26</div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <p data-rev>We build brands that last by making <span class="hl">bold digital ideas</span> with cultural impact. Also — we make websites.</p>
+  <p class="small" data-rev>An independent creative network born in Paris, operating worldwide. Strategy, design, 3D and code under one roof. Voted nothing yet, but we're working on it.</p>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee"><div class="track">
+  <span>Brand</span><span class="dot">✺</span><span>Web Design</span><span class="dot">✺</span><span>3D / WebGL</span><span class="dot">✺</span><span>Motion</span><span class="dot">✺</span><span>Strategy</span><span class="dot">✺</span>
+  <span>Brand</span><span class="dot">✺</span><span>Web Design</span><span class="dot">✺</span><span>3D / WebGL</span><span class="dot">✺</span><span>Motion</span><span class="dot">✺</span><span>Strategy</span><span class="dot">✺</span>
+</div></div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="sec-head"><h2 data-rev>Work</h2><span class="mono" data-rev>(01) — Selected campaigns</span></div>
+  <div class="work">
+    <div class="case c1" data-rev><div class="bg"></div><div class="ct"><div><div class="cat">Fintech · 2026</div><h3>Lumen Finance</h3></div><span class="arrow">↗</span></div></div>
+    <div class="case c2" data-rev><div class="bg"></div><div class="ct"><div><div class="cat">3D Config · 2025</div><h3>Apex Motors</h3></div><span class="arrow">↗</span></div></div>
+    <div class="case c3 light" data-rev><div class="bg"></div><div class="ct"><div><div class="cat">SaaS · 2025</div><h3>Orbit Labs</h3></div><span class="arrow">↗</span></div></div>
+    <div class="case c5 light" data-rev><div class="bg"></div><div class="ct"><div><div class="cat">E-commerce · 2024</div><h3>Solstice Beauty</h3></div><span class="arrow">↗</span></div></div>
+    <div class="case c6 light" data-rev><div class="bg"></div><div class="ct"><div><div class="cat">Editorial · 2024</div><h3>Verso Mag</h3></div><span class="arrow">↗</span></div></div>
+    <div class="case c4" data-rev><div class="bg"></div><div class="ct"><div><div class="cat">Luxury · 2023</div><h3>Maison Noir</h3></div><span class="arrow">↗</span></div></div>
+  </div>
+</section>
+
+<!-- STATS / ABOUT -->
+<section id="about">
+  <div class="stats">
+    <div class="stat" data-rev><div class="n" data-count="120" data-suffix="+">0</div><div class="l mono">Ideas shipped</div></div>
+    <div class="stat" data-rev><div class="n" data-count="5">0</div><div class="l mono">Studios worldwide</div></div>
+    <div class="stat" data-rev><div class="n" data-count="48">0</div><div class="l mono">Awards won</div></div>
+    <div class="stat" data-rev><div class="n" data-count="9" data-suffix="yrs">0</div><div class="l mono">Of serious craft</div></div>
+  </div>
+</section>
+
+<!-- BEYOND -->
+<section id="beyond" class="beyond">
+  <div class="sec-head" style="padding-left:0;padding-right:0"><h2 data-rev>Beyond</h2><span class="mono" data-rev>(02) — Our culture</span></div>
+  <div class="by-grid">
+    <div class="by by1" data-rev><div class="tag">Logbook</div><h4>Exploration logbook of an agency that refuses to sit still.</h4></div>
+    <div class="by by2" data-rev><div class="tag">Collective</div><h4>One agency, one collective, one collection.</h4></div>
+    <div class="by by3" data-rev><div class="tag">Culture</div><h4>Radical actions speak louder than pretty words.</h4></div>
+  </div>
+</section>
+
+<!-- CTA / CAREERS -->
+<section class="cta">
+  <h2 data-rev>Come build<br>with us</h2>
+  <a href="#contact">See open roles →</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="row">
+    <h3 data-rev>Got a bold idea?<br>So do we.</h3>
+    <div data-rev>
+      <p style="color:var(--grey);margin-bottom:22px;line-height:1.6;max-width:380px">Tell us what you're building. We reply within 48 hours — no bots, just the founders.</p>
+      <a href="mailto:hello@novae.studio" class="em">hello@novae.studio</a>
+    </div>
+  </div>
+  <div class="offices mono" data-rev>
+    <div><b>Paris</b>Rue Saint-Maur</div>
+    <div><b>New York</b>Soho, NY</div>
+    <div><b>Shanghai</b>Jing'an District</div>
+    <div><b>São Paulo</b>Av. Magalhães</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="big">NOVÆ</div>
+  <div class="meta mono">
+    © 2026 — All rights reserved<br>
+    <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Behance</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- HERO CAROUSEL ---------- */
+const slides=document.querySelectorAll('.slide');
+const bars=document.querySelectorAll('.hero-bars .b');
+const caps=[
+  ['Lumen Finance','Banking, reimagined — 3D website'],
+  ['Apex Motors','Configure your ride in real-time 3D'],
+  ['Orbit Labs','The SaaS platform that scaled'],
+  ['Solstice Beauty','Beauty in motion — e-commerce'],
+  ['Verso Mag','An editorial that talks back'],
+  ['Maison Noir','Luxury, finally online'],
+];
+let cur=0,timer;
+function go(n){
+  slides[cur].classList.remove('on');bars[cur].classList.remove('active');
+  cur=n;
+  slides[cur].classList.add('on');
+  document.getElementById('idx').textContent=String(cur+1).padStart(2,'0');
+  document.getElementById('cap-t').textContent=caps[cur][0];
+  document.getElementById('cap-s').textContent=caps[cur][1];
+  const b=bars[cur];b.classList.remove('active');void b.offsetWidth;b.classList.add('active');
+  // dark caption on light slide (s5)
+  const dark=cur===4;
+  document.querySelectorAll('.hero-cap,.hero-right').forEach(e=>e.style.color=dark?'#0E0E0E':'#fff');
+}
+function play(){timer=setInterval(()=>go((cur+1)%slides.length),3000);}
+function stop(){clearInterval(timer);}
+play();
+document.getElementById('hero').addEventListener('click',()=>{stop();go((cur+1)%slides.length);play();});
+
+/* ---------- MARQUEE ---------- */
+gsap.to('.marquee .track',{xPercent:-50,repeat:-1,duration:16,ease:'none'});
+
+/* ---------- REVEALS ---------- */
+gsap.utils.toArray('[data-rev]').forEach(el=>{
+  gsap.to(el,{y:0,opacity:1,duration:1,ease:'expo.out',
+    scrollTrigger:{trigger:el,start:'top 90%'}});
+});
+
+/* ---------- COUNTERS ---------- */
+gsap.utils.toArray('[data-count]').forEach(el=>{
+  const end=+el.dataset.count,suf=el.dataset.suffix||'',o={v:0};
+  ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>
+    gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)+suf})});
+});
+
+/* ---------- PARALLAX on hero word ---------- */
+gsap.utils.toArray('.slide .word').forEach(w=>{
+  gsap.to(w,{yPercent:-25,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+});
+
+/* ---------- REDUCE MOTION TOGGLE (BETC signature) ---------- */
+document.getElementById('reduce').addEventListener('click',function(){
+  const on=document.body.classList.toggle('reduced');
+  this.childNodes[1].textContent=on?'Enable motion':'Reduce motion';
+  if(on){stop();gsap.globalTimeline.pause();ScrollTrigger.getAll().forEach(s=>s.disable());
+    gsap.set('[data-rev]',{opacity:1,y:0});}
+  else{play();gsap.globalTimeline.resume();ScrollTrigger.getAll().forEach(s=>s.enable());}
+});
+</script>
+</body>
+</html>

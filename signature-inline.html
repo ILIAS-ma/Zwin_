@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVÆ — Signatures (édition directe)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F3;--ink:#0E0E0E;--grey:#7c7c76;--line:rgba(14,14,14,.14);
+    --blue:#2E2BFF;--lime:#CCFF00;--pink:#FF2E8B;--orange:#FF5A00;--violet:#6A2EFF;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;padding-bottom:90px}
+  ::selection{background:var(--blue);color:#fff}
+  .mono{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+
+  header{padding:54px 36px 40px;color:#fff;position:relative;overflow:hidden;
+    background:linear-gradient(110deg,var(--blue),var(--violet),var(--pink),var(--orange),var(--blue));
+    background-size:300% 100%;animation:flow 14s ease infinite}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  header h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,7vw,80px);letter-spacing:-.04em;line-height:.9}
+  header p{margin-top:16px;max-width:620px;font-size:15px;line-height:1.55;opacity:.95}
+
+  .bar{display:flex;gap:12px;align-items:center;padding:20px 36px;border-bottom:1px solid var(--ink);flex-wrap:wrap;position:sticky;top:0;background:var(--bg);z-index:20}
+  .btn{font-family:'Space Mono',monospace;text-transform:uppercase;font-size:12px;letter-spacing:.05em;padding:13px 24px;border-radius:40px;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;transition:.3s var(--ease)}
+  .btn:hover{transform:translateY(-2px)}
+  .bar .hint{color:var(--grey);font-size:13px;margin-left:auto}
+
+  .stage{padding:44px 36px;display:grid;gap:30px}
+
+  /* SIGNATURE CARD (animated, editable, on-page) */
+  .sig{position:relative;background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:30px 32px;max-width:620px}
+  .sig .tools{position:absolute;top:14px;right:14px;display:flex;gap:8px}
+  .tool{font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:8px 14px;border-radius:30px;border:1.5px solid var(--ink);background:#fff;cursor:pointer;transition:.25s var(--ease)}
+  .tool:hover{background:var(--ink);color:#fff}
+  .tool.go{background:var(--ink);color:#fff}
+  .tool.go:hover{background:var(--blue);border-color:var(--blue)}
+  .tool.x{border-color:var(--pink);color:var(--pink)}
+  .tool.x:hover{background:var(--pink);color:#fff}
+
+  .sig .inner{display:flex;gap:24px;align-items:stretch}
+  .sig .left{padding-right:24px;border-right:3px solid var(--blue);display:flex;flex-direction:column;justify-content:center}
+  .sig .brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;
+    background:linear-gradient(90deg,var(--blue),var(--pink),var(--orange),var(--blue));
+    background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    animation:flow 6s linear infinite}
+  .sig .brand-sub{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+
+  .sig .right{flex:1}
+  .nm{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1;outline:none}
+  .rl{font-weight:700;font-size:13px;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin:5px 0 12px;outline:none}
+  .ln{display:flex;align-items:center;gap:9px;font-size:14px;line-height:1.9;color:var(--ink)}
+  .ln .ic{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;color:#fff;font-size:9px;font-weight:bold;font-family:'Space Mono',monospace;flex-shrink:0}
+  .ln .ic.t{background:var(--blue)} .ln .ic.e{background:var(--pink)} .ln .ic.w{background:var(--orange)}
+  .ln [contenteditable]{outline:none}
+
+  .colorbar{display:flex;margin-top:16px;border-radius:4px;overflow:hidden;width:200px}
+  .colorbar i{height:7px;flex:1;background:var(--blue)}
+  .colorbar i:nth-child(2){background:var(--lime)}
+  .colorbar i:nth-child(3){background:var(--pink)}
+  .colorbar i:nth-child(4){background:var(--orange)}
+  .colorbar.anim i{animation:pulse 2.4s var(--ease) infinite}
+  .colorbar.anim i:nth-child(2){animation-delay:.2s}
+  .colorbar.anim i:nth-child(3){animation-delay:.4s}
+  .colorbar.anim i:nth-child(4){animation-delay:.6s}
+  @keyframes pulse{0%,100%{transform:scaleY(1)}50%{transform:scaleY(2.4)}}
+
+  [contenteditable]:focus{background:rgba(46,43,255,.07);border-radius:4px}
+  .editable-hint{position:absolute;bottom:12px;left:32px;color:var(--grey);font-size:11px}
+
+  #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:15px 28px;border-radius:50px;font-family:'Space Mono',monospace;font-size:13px;z-index:100;transition:transform .5s var(--ease)}
+  #toast.show{transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:620px){
+    .sig .inner{flex-direction:column;gap:14px}
+    .sig .left{border-right:none;border-bottom:3px solid var(--blue);padding:0 0 12px}
+    header,.bar,.stage{padding-left:20px;padding-right:20px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Signatures NOVÆ</h1>
+  <p>Clique directement sur le texte (nom, poste, téléphone…) pour le modifier. Puis « Cloner » pour ajouter un employé, et « Copier » pour coller la signature dans ta messagerie.</p>
+</header>
+
+<div class="bar">
+  <button class="btn" id="add">+ Nouvel employé</button>
+  <span class="hint mono">Édition directe — couleurs de la marque conservées au collage</span>
+</div>
+
+<div class="stage" id="stage"></div>
+
+<div id="toast">Copié ✓</div>
+
+<template id="tpl">
+  <div class="sig">
+    <div class="tools">
+      <button class="tool go js-copy">Copier</button>
+      <button class="tool js-dup">Cloner</button>
+      <button class="tool x js-del">✕</button>
+    </div>
+    <div class="inner">
+      <div class="left">
+        <div class="brand">NOVÆ</div>
+        <div class="brand-sub">Creative Network</div>
+      </div>
+      <div class="right">
+        <div class="nm" contenteditable="true">Camille Durand</div>
+        <div class="rl" contenteditable="true">Directrice Artistique</div>
+        <div class="ln"><span class="ic t">T</span><span contenteditable="true">+33 6 12 34 56 78</span></div>
+        <div class="ln"><span class="ic e">E</span><span contenteditable="true">camille@novae.studio</span></div>
+        <div class="ln"><span class="ic w">W</span><span contenteditable="true">novae.studio</span></div>
+        <div class="colorbar anim"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="editable-hint mono">✎ Texte éditable</div>
+  </div>
+</template>
+
+<script>
+const stage=document.getElementById('stage');
+const tpl=document.getElementById('tpl');
+
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* read values from a card */
+function read(card){
+  const t=card.querySelectorAll('.ln span[contenteditable]');
+  return {
+    name:card.querySelector('.nm').textContent.trim(),
+    role:card.querySelector('.rl').textContent.trim(),
+    phone:t[0].textContent.trim(),
+    email:t[1].textContent.trim(),
+    web:t[2].textContent.trim().replace(/^https?:\/\//,'')
+  };
+}
+
+/* EMAIL-SAFE signature: tables + inline styles + web-safe fonts */
+function buildSig(d){
+  const acc='#2E2BFF';
+  const tel='tel:'+d.phone.replace(/[^0-9+]/g,'');
+  return `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#0E0E0E;">
+  <tr>
+    <td style="padding:0 20px 0 0;border-right:3px solid ${acc};vertical-align:middle;">
+      <div style="font-size:14px;font-weight:bold;letter-spacing:1px;color:${acc};">NOVÆ</div>
+      <div style="font-size:10px;color:#7c7c76;letter-spacing:1px;text-transform:uppercase;">Creative Network</div>
+    </td>
+    <td style="padding:0 0 0 20px;vertical-align:top;">
+      <div style="font-size:22px;font-weight:bold;letter-spacing:-0.5px;line-height:1.05;">${esc(d.name)}</div>
+      <div style="font-size:12px;font-weight:bold;color:${acc};text-transform:uppercase;letter-spacing:1px;margin:3px 0 10px;">${esc(d.role)}</div>
+      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-size:13px;line-height:1.7;">
+        ${d.phone?`<tr><td style="color:#2E2BFF;font-weight:bold;padding-right:8px;">T</td><td><a href="${tel}" style="color:#0E0E0E;text-decoration:none;">${esc(d.phone)}</a></td></tr>`:''}
+        ${d.email?`<tr><td style="color:#FF2E8B;font-weight:bold;padding-right:8px;">E</td><td><a href="mailto:${esc(d.email)}" style="color:#0E0E0E;text-decoration:none;">${esc(d.email)}</a></td></tr>`:''}
+        ${d.web?`<tr><td style="color:#FF5A00;font-weight:bold;padding-right:8px;">W</td><td><a href="https://${esc(d.web)}" style="color:#2E2BFF;text-decoration:none;font-weight:bold;">${esc(d.web)}</a></td></tr>`:''}
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-top:14px;">
+        <tr>
+          <td style="width:46px;height:6px;background:#2E2BFF;font-size:0;line-height:0;">&nbsp;</td>
+          <td style="width:46px;height:6px;background:#CCFF00;font-size:0;line-height:0;">&nbsp;</td>
+          <td style="width:46px;height:6px;background:#FF2E8B;font-size:0;line-height:0;">&nbsp;</td>
+          <td style="width:46px;height:6px;background:#FF5A00;font-size:0;line-height:0;">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>`;
+}
+
+async function copySig(card){
+  const html=buildSig(read(card));
+  const plain=Object.values(read(card)).filter(Boolean).join(' · ');
+  try{
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html':new Blob([html],{type:'text/html'}),
+      'text/plain':new Blob([plain],{type:'text/plain'})
+    })]);
+    toast('Signature copiée ✓ — colle dans ta messagerie');
+  }catch(e){
+    // build temporary node to select rendered html
+    const tmp=document.createElement('div');tmp.style.position='fixed';tmp.style.left='-9999px';
+    tmp.innerHTML=html;document.body.appendChild(tmp);
+    const r=document.createRange();r.selectNodeContents(tmp);
+    const s=getSelection();s.removeAllRanges();s.addRange(r);
+    try{document.execCommand('copy');toast('Signature copiée ✓');}catch(_){toast('Ouvre le fichier en local pour copier');}
+    s.removeAllRanges();tmp.remove();
+  }
+}
+
+function makeCard(data){
+  const node=tpl.content.firstElementChild.cloneNode(true);
+  if(data){
+    node.querySelector('.nm').textContent=data.name;
+    node.querySelector('.rl').textContent=data.role;
+    const t=node.querySelectorAll('.ln span[contenteditable]');
+    t[0].textContent=data.phone;t[1].textContent=data.email;t[2].textContent=data.web;
+  }
+  node.querySelector('.js-copy').addEventListener('click',()=>copySig(node));
+  node.querySelector('.js-dup').addEventListener('click',()=>{const c=makeCard(read(node));c.scrollIntoView({behavior:'smooth',block:'center'});});
+  node.querySelector('.js-del').addEventListener('click',()=>{node.style.transition='.3s';node.style.opacity=0;node.style.transform='translateY(16px)';setTimeout(()=>node.remove(),300);});
+  stage.appendChild(node);
+  return node;
+}
+
+let tt;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600);}
+
+document.getElementById('add').addEventListener('click',()=>{const c=makeCard({name:'Prénom Nom',role:'Poste',phone:'+33 6 00 00 00 00',email:'prenom@novae.studio',web:'novae.studio'});c.scrollIntoView({behavior:'smooth',block:'center'});});
+
+/* seed */
+makeCard();
+</script>
+</body>
+</html>
