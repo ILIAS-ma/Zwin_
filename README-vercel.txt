@@ -89,3 +89,15 @@ REMARQUE SUR LE RUNTIME
 api/send.js tourne en runtime Node.js, surtout pas Edge : le runtime Edge
 ne permet pas d'ouvrir de connexion TCP, donc aucun envoi SMTP n'y est
 possible. Ne pas ajouter "export const runtime = 'edge'" dans ce fichier.
+
+
+OUTIL DE DIAGNOSTIC /api/diag
+-------------------------------
+Ajoute DEBUG_MAIL=1 dans les variables Vercel, redeploie, puis ouvre
+https://ovia.agency/api/diag dans le navigateur.
+
+La page indique quelles variables ce deploiement voit reellement, teste la
+connexion au serveur SMTP et affiche la cause exacte de l echec. Aucun mot de
+passe n est renvoye. Sans DEBUG_MAIL=1 la page repond 404.
+
+Retire DEBUG_MAIL quand tout fonctionne.
