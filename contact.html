@@ -50,8 +50,9 @@
 
   <div class="contact-wrap">
 
-    <!-- 3 champs seulement. L'envoi part vers send.php (voir README-hostinger.txt). -->
-    <form class="brief" id="form" action="send.php" method="post" novalidate>
+    <!-- 3 champs seulement. L'envoi part vers /api/send : fonction serverless sur Vercel,
+         ou send.php via une redirection .htaccess chez Hostinger. -->
+    <form class="brief" id="form" action="/api/send" method="post" novalidate>
       <div class="field" data-rev>
         <label class="mono" for="f-name" data-i18n="f_name">Votre nom *</label>
         <input id="f-name" name="name" type="text" autocomplete="name" required>

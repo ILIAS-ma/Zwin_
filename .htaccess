@@ -16,3 +16,10 @@
 
 # Page d'accueil du site
 DirectoryIndex index.html
+
+# Le formulaire poste vers /api/send (meme URL que sur Vercel).
+# Chez Hostinger, on redirige cette URL vers le script PHP.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^api/send/?$ send.php [L]
+</IfModule>

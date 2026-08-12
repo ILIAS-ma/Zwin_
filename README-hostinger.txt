@@ -148,3 +148,7 @@ page contact. Pour la remplacer partout : cherche "contact@ovia.agency"
 dans les fichiers .html, dans assets/ovia.js et dans config.php.
 
 Le téléphone (06 51 46 65 82) est dans contact.html uniquement.
+
+NOTE VERCEL : le formulaire poste vers /api/send. Le .htaccess redirige
+cette URL vers send.php, donc rien ne change pour cet hebergement.
+Voir README-vercel.txt pour le deploiement sans PHP.

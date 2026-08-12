@@ -1,0 +1,12 @@
+# Fichiers inutiles (ou trompeurs) sur Vercel : PHP n'y est pas execute.
+# Ils restent dans le depot pour l'hebergement Hostinger.
+send.php
+config.php
+config.example.php
+.htaccess
+README-hostinger.txt
+
+# Anciennes maquettes
+agency-betc (1).html
+agency-contact (1).html
+signature-inline.html

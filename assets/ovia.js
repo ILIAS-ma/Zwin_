@@ -423,7 +423,8 @@ function initForm(){
     if(fail) fail.style.display = 'none';
     if(btn){ btn.disabled = true; if(btnLabel) btnLabel.textContent = I18N[LANG].f_sending; }
 
-    const data = new FormData(form);
+    // urlencoded : lisible par PHP comme par la fonction serverless Vercel
+    const data = new URLSearchParams(new FormData(form));
     data.append('ajax','1');
 
     fetch(form.getAttribute('action'), {method:'POST', body:data})

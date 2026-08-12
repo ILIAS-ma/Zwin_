@@ -1,0 +1,12 @@
+{
+  "name": "ovia-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site Ovia — pages statiques + route d'envoi du formulaire de contact",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
