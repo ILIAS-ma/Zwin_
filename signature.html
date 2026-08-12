@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ovia — Générateur de signature email</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230E0E0E'/><text x='50' y='74' font-size='70' font-family='Arial' font-weight='bold' fill='%23C8FF00' text-anchor='middle'>O</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F3;--ink:#0E0E0E;--grey:#7c7c76;--line:rgba(14,14,14,.14);
+    --accent:#2E2BFF;--lime:#C8FF00;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;padding:0 0 80px}
+  ::selection{background:var(--accent);color:#fff}
+  .mono{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+
+  header{padding:44px 34px 30px;border-bottom:1px solid var(--line)}
+  .logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.04em;text-decoration:none;color:var(--ink)}
+  .logo span{color:var(--accent)}
+  .logo i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--lime);margin-left:3px;vertical-align:2px}
+  header h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.03em;
+    font-size:clamp(30px,5vw,58px);line-height:.95;margin:26px 0 14px}
+  header p{color:var(--grey);max-width:620px;line-height:1.6;font-size:15px}
+
+  .wrap{display:grid;grid-template-columns:minmax(300px,400px) 1fr;gap:54px;padding:44px 34px}
+  @media(max-width:900px){.wrap{grid-template-columns:1fr;gap:36px;padding:30px 22px}}
+
+  .champ{margin-bottom:22px}
+  .champ label{display:block;color:var(--grey);margin-bottom:8px}
+  .champ input{width:100%;border:none;border-bottom:1.5px solid var(--line);background:transparent;
+    font-family:'Archivo',sans-serif;font-size:17px;color:var(--ink);padding:8px 0;transition:border-color .3s}
+  .champ input:focus{outline:none;border-color:var(--accent)}
+
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{border:none;cursor:pointer;font-family:'Space Mono',monospace;text-transform:uppercase;
+    letter-spacing:.06em;font-size:11px;padding:16px 26px;border-radius:40px;
+    background:var(--ink);color:var(--bg);transition:.3s var(--ease)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--bg)}
+
+  .zone-titre{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px}
+  .zone-titre .mono{color:var(--grey)}
+  .apercu{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px;overflow-x:auto}
+  .note{color:var(--grey);font-size:13px;line-height:1.7;margin-top:16px}
+
+  details{margin-top:34px;border-top:1px solid var(--line);padding-top:24px}
+  summary{cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em}
+  details ol{margin:16px 0 0 20px;color:var(--grey);font-size:14px;line-height:1.9}
+  details h4{margin-top:20px;font-size:14px}
+  code{font-family:'Space Mono',monospace;font-size:12px;background:rgba(14,14,14,.06);padding:2px 6px;border-radius:4px}
+
+  #source{width:100%;height:190px;margin-top:16px;border:1px solid var(--line);border-radius:12px;
+    padding:16px;font-family:'Space Mono',monospace;font-size:11px;line-height:1.6;
+    background:#fff;color:var(--grey);resize:vertical;display:none}
+
+  #toast{position:fixed;left:50%;bottom:34px;transform:translate(-50%,90px);background:var(--ink);color:var(--bg);
+    padding:15px 28px;border-radius:40px;font-family:'Space Mono',monospace;font-size:11px;
+    text-transform:uppercase;letter-spacing:.06em;transition:transform .5s var(--ease);z-index:9}
+  #toast.on{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">OV<span>I</span>A<i></i></a>
+  <h1>Signature email</h1>
+  <p>Remplis les champs, clique sur « Copier la signature », puis colle-la dans Outlook. Elle est construite en tableaux avec styles en ligne : c'est le seul format que les messageries affichent correctement, sur ordinateur comme sur mobile.</p>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="champ">
+      <label class="mono" for="f-nom">Nom et prénom</label>
+      <input id="f-nom" type="text" value="Ilias Bounabat">
+    </div>
+    <div class="champ">
+      <label class="mono" for="f-poste">Poste</label>
+      <input id="f-poste" type="text" value="Fondateur">
+    </div>
+    <div class="champ">
+      <label class="mono" for="f-email">Email</label>
+      <input id="f-email" type="email" value="contact@ovia.agency">
+    </div>
+    <div class="champ">
+      <label class="mono" for="f-tel">Téléphone</label>
+      <input id="f-tel" type="text" value="06 51 46 65 82">
+    </div>
+    <div class="champ">
+      <label class="mono" for="f-site">Site</label>
+      <input id="f-site" type="text" value="ovia.agency">
+    </div>
+    <div class="champ">
+      <label class="mono" for="f-lieu">Localisation</label>
+      <input id="f-lieu" type="text" value="Paris · Casablanca">
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="copier">Copier la signature</button>
+      <button class="btn ghost" id="voir-code">Voir le code HTML</button>
+    </div>
+    <textarea id="source" readonly spellcheck="false"></textarea>
+  </section>
+
+  <section>
+    <div class="zone-titre">
+      <span class="mono">Aperçu</span>
+      <span class="mono">Rendu réel en messagerie</span>
+    </div>
+    <div class="apercu" id="apercu"></div>
+    <p class="note">L'aperçu est exactement ce qui sera collé : aucune image, aucune police à télécharger, aucun lien externe. Une signature qui repose sur une image se fait bloquer par la plupart des messageries et n'affiche qu'un cadre vide.</p>
+
+    <details>
+      <summary>Comment l'installer</summary>
+
+      <h4>Outlook (application Windows)</h4>
+      <ol>
+        <li>Clique sur « Copier la signature » ci-dessus.</li>
+        <li>Dans Outlook : Fichier → Options → Courrier → <code>Signatures…</code></li>
+        <li>« Nouveau », donne-lui un nom (par exemple <code>Ovia</code>).</li>
+        <li>Clique dans la grande zone de texte et colle avec <code>Ctrl + V</code>.</li>
+        <li>À droite, choisis cette signature pour « Nouveaux messages » et « Réponses/transferts ».</li>
+        <li>OK. Elle s'ajoutera à chaque email automatiquement.</li>
+      </ol>
+
+      <h4>Outlook sur le web / nouveau Outlook</h4>
+      <ol>
+        <li>Roue dentée → Courrier → Composer et répondre.</li>
+        <li>Colle dans la zone « Signature électronique », puis Enregistrer.</li>
+      </ol>
+
+      <h4>Gmail</h4>
+      <ol>
+        <li>Roue dentée → Voir tous les paramètres → onglet Général.</li>
+        <li>Descends jusqu'à « Signature », crée-en une et colle.</li>
+        <li>Tout en bas de la page : « Enregistrer les modifications ».</li>
+      </ol>
+
+      <p class="note">Si le collage arrive sans mise en forme, la messagerie est en mode texte brut : repasse en HTML (ou « Texte enrichi ») avant de coller.</p>
+    </details>
+  </section>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+const champs = ['nom','poste','email','tel','site','lieu'];
+const el = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+/* 06 51 46 65 82 -> +33651466582, pour rendre le numéro cliquable sur mobile */
+function lienTel(num){
+  const n = String(num).replace(/[^0-9+]/g,'');
+  return n.charAt(0) === '0' ? '+33' + n.slice(1) : n;
+}
+
+function valeurs(){
+  const v = {};
+  champs.forEach(c => { v[c] = el('f-' + c).value.trim(); });
+  return v;
+}
+
+/* Signature compatible messageries : tableaux, styles en ligne, polices web-safe. */
+function construire(){
+  const d = valeurs();
+  const encre = '#0E0E0E', gris = '#7c7c76', accent = '#2E2BFF';
+
+  const ligne = (etiquette, contenu) => contenu
+    ? '<tr><td style="padding:1px 10px 1px 0;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:' + accent + ';font-weight:bold;letter-spacing:.5px;">' + etiquette + '</td>'
+      + '<td style="padding:1px 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:' + encre + ';">' + contenu + '</td></tr>'
+    : '';
+
+  const lien = (href, texte) => '<a href="' + href + '" style="color:' + encre + ';text-decoration:none;">' + esc(texte) + '</a>';
+
+  const mailto = d.email ? lien('mailto:' + esc(d.email), d.email) : '';
+  const tel    = d.tel   ? lien('tel:' + esc(lienTel(d.tel)), d.tel) : '';
+  const site   = d.site  ? lien('https://' + esc(d.site.replace(/^https?:\/\//, '')), d.site) : '';
+
+  return '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">\n'
+    + '  <tr>\n'
+    + '    <td style="padding:0 22px 0 0;border-right:3px solid ' + accent + ';vertical-align:top;">\n'
+    + '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:bold;letter-spacing:-1px;color:' + encre + ';line-height:1;">OV<span style="color:' + accent + ';">I</span>A</div>\n'
+    + '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:9px;letter-spacing:1.5px;color:' + gris + ';padding-top:6px;">STUDIO WEB</div>\n'
+    + '    </td>\n'
+    + '    <td style="padding:0 0 0 22px;vertical-align:top;">\n'
+    + '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;color:' + encre + ';line-height:1.3;">' + esc(d.nom) + '</div>\n'
+    + '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1px;color:' + gris + ';text-transform:uppercase;padding:3px 0 10px;">' + esc(d.poste) + '</div>\n'
+    + '      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">\n'
+    + '        ' + ligne('E', mailto) + '\n'
+    + '        ' + ligne('T', tel) + '\n'
+    + '        ' + ligne('W', site) + '\n'
+    + '      </table>\n'
+    + (d.lieu ? '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:' + gris + ';padding-top:10px;">' + esc(d.lieu) + '</div>\n' : '')
+    + '    </td>\n'
+    + '  </tr>\n'
+    + '</table>';
+}
+
+function versionTexte(){
+  const d = valeurs();
+  return [d.nom, d.poste, '', d.email, d.tel, d.site, d.lieu].filter(Boolean).join('\n');
+}
+
+function rendre(){
+  const html = construire();
+  el('apercu').innerHTML = html;
+  el('source').value = html;
+  try { localStorage.setItem('ovia-signature', JSON.stringify(valeurs())); } catch(e) {}
+}
+
+function toast(msg){
+  const t = el('toast');
+  t.textContent = msg;
+  t.classList.add('on');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('on'), 3200);
+}
+
+/* Copie en conservant la mise en forme (text/html), avec repli sur la sélection. */
+async function copier(){
+  const html = construire();
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html':  new Blob([html], { type: 'text/html' }),
+      'text/plain': new Blob([versionTexte()], { type: 'text/plain' })
+    })]);
+    toast('Signature copiée — colle-la dans ta messagerie');
+  } catch(e) {
+    const zone = el('apercu');
+    const sel = window.getSelection(), plage = document.createRange();
+    plage.selectNodeContents(zone);
+    sel.removeAllRanges();
+    sel.addRange(plage);
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch(_) {}
+    sel.removeAllRanges();
+    toast(ok ? 'Signature copiée' : 'Copie refusée — sélectionne l\'aperçu puis Ctrl+C');
+  }
+}
+
+champs.forEach(c => el('f-' + c).addEventListener('input', rendre));
+el('copier').addEventListener('click', copier);
+el('voir-code').addEventListener('click', () => {
+  const s = el('source');
+  const visible = s.style.display === 'block';
+  s.style.display = visible ? 'none' : 'block';
+  el('voir-code').textContent = visible ? 'Voir le code HTML' : 'Masquer le code';
+  if(!visible){ s.focus(); s.select(); }
+});
+
+/* Restaure la dernière saisie */
+try {
+  const sauve = JSON.parse(localStorage.getItem('ovia-signature') || 'null');
+  if(sauve) champs.forEach(c => { if(sauve[c] !== undefined) el('f-' + c).value = sauve[c]; });
+} catch(e) {}
+
+rendre();
+</script>
+</body>
+</html>
