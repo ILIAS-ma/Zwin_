@@ -11,14 +11,19 @@
 
 const nodemailer = require('nodemailer');
 
+/* Les variables collees dans l'interface Vercel arrivent parfois avec une
+   espace ou un retour a la ligne invisible en fin de valeur, ce qui fait
+   echouer l'authentification SMTP (EAUTH) sans explication. On nettoie. */
+const propre = v => (typeof v === 'string' ? v.trim() : v);
+
 const CFG = {
-  host:     process.env.SMTP_HOST || 'smtp.hostinger.com',
-  port:     Number(process.env.SMTP_PORT || 465),
-  user:     process.env.SMTP_USER,
-  pass:     process.env.SMTP_PASS,
-  to:       process.env.MAIL_TO   || 'contact@ovia.agency',
-  from:     process.env.MAIL_FROM || process.env.SMTP_USER,
-  fromName: process.env.MAIL_FROM_NAME || 'Site Ovia',
+  host:     propre(process.env.SMTP_HOST) || 'smtp.hostinger.com',
+  port:     Number(propre(process.env.SMTP_PORT) || 465),
+  user:     propre(process.env.SMTP_USER),
+  pass:     propre(process.env.SMTP_PASS),
+  to:       propre(process.env.MAIL_TO) || 'contact@ovia.agency',
+  from:     propre(process.env.MAIL_FROM) || propre(process.env.SMTP_USER),
+  fromName: propre(process.env.MAIL_FROM_NAME) || 'Site Ovia',
   debug:    process.env.DEBUG_MAIL === '1',
 };
 
