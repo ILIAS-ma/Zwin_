@@ -73,7 +73,9 @@ module.exports = async (req, res) => {
 
   if(!CFG.user || !CFG.pass){
     console.error('[ovia] SMTP_USER ou SMTP_PASS absent des variables d\'environnement Vercel');
-    return res.status(500).send(CFG.debug ? 'ERR: SMTP_USER/SMTP_PASS manquants' : 'ERR');
+    // Le code court part toujours : il se lit dans l'onglet Reseau du navigateur
+    // et suffit a identifier la panne, sans rien divulguer de sensible.
+    return res.status(500).send('ERR:CONFIG');
   }
 
   /* Pas de retour a la ligne dans les en-tetes (injection d'en-tetes) */
@@ -114,6 +116,7 @@ module.exports = async (req, res) => {
     return res.status(200).send('OK');
   } catch (err) {
     console.error('[ovia] envoi SMTP echoue :', err && err.message, err && err.code);
-    return res.status(500).send(CFG.debug ? `ERR: ${err && err.message}` : 'ERR');
+    const code = (err && err.code) || (err && err.responseCode) || 'INCONNU';
+    return res.status(500).send(CFG.debug ? `ERR:${code} ${err && err.message}` : `ERR:${code}`);
   }
 };
