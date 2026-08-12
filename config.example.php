@@ -14,7 +14,7 @@ return [
    // L'adresse technique qui ENVOIE. Doit appartenir à ton domaine.
    // (L'email du visiteur est mis en "Répondre à" : un clic sur "Répondre"
    //  dans ta boîte lui écrit directement.)
-   'expediteur'     => 'no-reply@ovia.agency',
+   'expediteur'     => 'contact@ovia.agency',
    'nom_expediteur' => 'Site Ovia',
 
 
@@ -32,7 +32,7 @@ return [
    'smtp_host'   => 'smtp.hostinger.com',
    'smtp_port'   => 465,          // 465 avec 'ssl'  |  587 avec 'tls'
    'smtp_secure' => 'ssl',        // 'ssl' ou 'tls'
-   'smtp_user'   => 'no-reply@ovia.agency',   // = l'adresse expéditrice
+   'smtp_user'   => 'contact@ovia.agency',   // = l'adresse expéditrice
    'smtp_pass'   => '',           // ← mot de passe de CETTE boîte email
 
    /* Journalise les échecs dans .mail-error.log (à côté de send.php).
