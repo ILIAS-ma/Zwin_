@@ -10,3 +10,7 @@ node_modules/
 *.log
 Thumbs.db
 .DS_Store
+
+# Fichier d import des variables Vercel : contient le mot de passe
+.env
+.env.*

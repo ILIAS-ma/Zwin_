@@ -3,12 +3,12 @@
 # Empêche de télécharger le journal d'erreurs et le fichier de réglages
 # depuis un navigateur (ils restent lisibles par PHP côté serveur).
 <IfModule mod_authz_core.c>
-  <FilesMatch "^(\.mail-error\.log|config\.php)$">
+  <FilesMatch "^(.mail-error.log|config.php|.env.*)$">
     Require all denied
   </FilesMatch>
 </IfModule>
 <IfModule !mod_authz_core.c>
-  <FilesMatch "^(\.mail-error\.log|config\.php)$">
+  <FilesMatch "^(.mail-error.log|config.php|.env.*)$">
     Order allow,deny
     Deny from all
   </FilesMatch>
