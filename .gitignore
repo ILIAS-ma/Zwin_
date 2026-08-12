@@ -1,0 +1,12 @@
+# Contient le mot de passe de la boîte email : ne doit JAMAIS partir sur GitHub.
+# Le modèle sans mot de passe est versionné sous le nom config.example.php
+config.php
+
+# Journal des échecs d'envoi (généré sur le serveur)
+.mail-error.log
+
+# Divers
+node_modules/
+*.log
+Thumbs.db
+.DS_Store

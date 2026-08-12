@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ovia — Contact</title>
+<meta name="description" content="Parlez-nous de votre projet web. Ovia répond sous 48h — devis détaillé, sans engagement.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230E0E0E'/><text x='50' y='74' font-size='70' font-family='Arial' font-weight='bold' fill='%23C8FF00' text-anchor='middle'>O</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Archivo:wght@400;500;600&family=Space+Mono&family=Noto+Kufi+Arabic:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ovia.css">
+<noscript><style>[data-rev]{opacity:1;transform:none}#pt{display:none}</style></noscript>
+</head>
+<body>
+
+<div id="prog"></div>
+<div id="pt" class="in"><div class="panel"><span class="mark">OV<span>I</span>A</span></div></div>
+
+<nav>
+  <a href="index.html" class="logo">OV<span>I</span>A<i class="dot"></i></a>
+  <div class="links">
+    <a href="work.html" data-i18n="nav_work">Réalisations</a>
+    <a href="services.html" data-i18n="nav_services">Services</a>
+    <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+    <a href="contact.html" class="active" data-i18n="nav_contact">Contact</a>
+    <div class="lang">
+      <button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="ar">AR</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</nav>
+
+<div id="menu">
+  <a class="ml" href="index.html" data-i18n="nav_home">Accueil</a>
+  <a class="ml" href="work.html" data-i18n="nav_work">Réalisations</a>
+  <a class="ml" href="services.html" data-i18n="nav_services">Services</a>
+  <a class="ml" href="faq.html" data-i18n="nav_faq">FAQ</a>
+  <a class="ml" href="contact.html" data-i18n="nav_contact">Contact</a>
+  <div class="mfoot mono"><a href="mailto:contact@ovia.agency">contact@ovia.agency</a></div>
+</div>
+
+<main class="page">
+
+  <section class="page-hero">
+    <div class="mono" data-i18n="contact_kicker">(Contact) — Créons quelque chose</div>
+    <h1 data-i18n-html="contact_title">Parlons<br><span class="o">de vous</span></h1>
+    <p class="lead" data-i18n="contact_lead">Une idée, un brief ou juste une intuition ? Parlez-nous de votre projet. On répond sous 48h — pas de bot, juste l'équipe.</p>
+  </section>
+
+  <div class="contact-wrap">
+
+    <!-- 3 champs seulement. L'envoi part vers send.php (voir README-hostinger.txt). -->
+    <form class="brief" id="form" action="send.php" method="post" novalidate>
+      <div class="field" data-rev>
+        <label class="mono" for="f-name" data-i18n="f_name">Votre nom *</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+        <div class="err mono">Ce champ est obligatoire</div>
+      </div>
+
+      <div class="field" data-rev>
+        <label class="mono" for="f-email" data-i18n="f_email">Votre email *</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+        <div class="err mono">Adresse email invalide</div>
+      </div>
+
+      <div class="field" data-rev>
+        <label class="mono" for="f-message" data-i18n="f_message">Votre message *</label>
+        <textarea id="f-message" name="message" rows="4" required></textarea>
+        <div class="err mono">Ce champ est obligatoire</div>
+      </div>
+
+      <!-- piège à robots : invisible, doit rester vide -->
+      <div class="hp" aria-hidden="true"><label>Ne pas remplir<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="submit" data-rev>
+        <button class="btn" type="submit" id="send"><span data-i18n="f_submit">Envoyer</span> <span>→</span></button>
+        <span class="note" data-i18n="f_note">Réponse sous 48h ouvrées. Vos informations restent confidentielles.</span>
+      </div>
+
+      <div class="formdone" id="done" data-i18n-html="f_done">Bien reçu. <span>On revient vers vous sous 48h. ✺</span></div>
+      <div class="formfail" id="fail" data-i18n-html="f_fail">L'envoi n'a pas fonctionné. Écrivez-nous directement à <a href="mailto:contact@ovia.agency">contact@ovia.agency</a>.</div>
+    </form>
+
+    <aside class="aside">
+      <div class="blk" data-rev>
+        <h4 class="mono" data-i18n="a_write">Écrivez-nous</h4>
+        <a class="em" href="mailto:contact@ovia.agency">contact@ovia.agency</a>
+      </div>
+      <div class="blk" data-rev>
+        <h4 class="mono" data-i18n="a_call">Appelez-nous</h4>
+        <a class="em" href="tel:+33651466582">06 51 46 65 82</a>
+      </div>
+      <div class="blk" data-rev>
+        <h4 class="mono" data-i18n="a_studios">Localisation</h4>
+        <div class="offices">
+          <div><b data-i18n="off_paris">Paris</b><span data-i18n="off_paris_s">Île-de-France</span></div>
+          <div><b data-i18n="off_casa">Casablanca</b><span data-i18n="off_casa_s">Maroc</span></div>
+          <div><b data-i18n="off_remote">Remote</b><span data-i18n="off_remote_s">Disponible partout</span></div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- FAQ (aperçu) -->
+  <section class="faq">
+    <div class="faq-head">
+      <h2 data-rev data-i18n="faq_title">FAQ</h2>
+      <span class="mono" data-rev data-i18n="faq_tag">— Questions fréquentes</span>
+    </div>
+
+    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq2_q">Quels sont vos tarifs ?</h3><span class="sign"></span></div>
+      <div class="a"><p data-i18n="faq2_a">Tout dépend du périmètre. On établit un devis détaillé et personnalisé après un premier appel.</p></div></div>
+
+    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq3_q">Quels délais pour un projet web ?</h3><span class="sign"></span></div>
+      <div class="a"><p data-i18n="faq3_a">Une landing page : 2 à 4 semaines. Un e-commerce : 4 à 8 semaines.</p></div></div>
+
+    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq6_q">Que se passe-t-il après la mise en ligne ?</h3><span class="sign"></span></div>
+      <div class="a"><p data-i18n="faq6_a">On ne disparaît pas le jour du lancement : maintenance, mises à jour et suivi des performances.</p></div></div>
+
+    <div class="faq-more" data-rev>
+      <span data-i18n="faq_more">Une autre question en tête ?</span>
+      <a class="btn ghost" href="faq.html" data-i18n="faq_all">Toutes les questions →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="big">OV<span>I</span>A</div>
+    <div class="meta mono">
+      <span data-i18n="footer_rights">© 2026 Ovia — Tous droits réservés</span><br>
+      <a href="mailto:contact@ovia.agency">contact@ovia.agency</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="assets/ovia.js"></script>
+</body>
+</html>

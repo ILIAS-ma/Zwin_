@@ -1,0 +1,22 @@
+Captures d'écran des projets
+============================
+
+Les 4 captures, avec EXACTEMENT ces noms de fichiers :
+
+  eco-motors-deal.jpg     -> carte "Eco Motors Deal"     ⚠ MANQUANTE
+  paris-car-week.jpg      -> carte "PCW"                 ⚠ MANQUANTE
+  artebat.jpg             -> carte "Artebat"             ✔ faite (artebat.com)
+  museo-santorsola.jpg    -> carte "Museo Santorsola"    ✔ faite (museosantorsola.it/fr)
+
+Les deux manquantes seront générées de la même façon dès que les adresses
+des sites Eco Motors Deal et Paris Car Week seront connues. En attendant,
+ces deux cartes s'affichent en couleur unie.
+
+Conseils :
+- format paysage, ~1600 x 1100 px, JPG qualité 80 (< 400 Ko par image)
+- la capture est cadrée depuis le haut, un voile sombre est appliqué en bas
+  pour garder le titre lisible.
+- si une image est absente, la carte affiche simplement une couleur unie :
+  le site ne casse pas.
+
+Pour changer un nom de fichier, édite assets/ovia.css (règles .p1 à .p4).
