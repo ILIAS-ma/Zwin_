@@ -27,9 +27,14 @@ environnements (Production, Preview, Development) pour chacune :
 
     SMTP_HOST   smtp.hostinger.com
     SMTP_PORT   465
-    SMTP_USER   no-reply@ovia.agency
-    SMTP_PASS   (le mot de passe de la boîte no-reply@ovia.agency)
+    SMTP_USER   contact@ovia.agency
+    SMTP_PASS   (le mot de passe de cette boîte, cree dans hPanel)
     MAIL_TO     contact@ovia.agency
+
+UNE SEULE boîte suffit : le formulaire s'envoie à lui-même. L'email du
+visiteur est mis en "Répondre à", donc un clic sur "Répondre" lui écrit
+directement. Une deuxième boîte no-reply@ est possible mais pas necessaire ;
+dans ce cas SMTP_USER = no-reply@ovia.agency et MAIL_TO = contact@ovia.agency.
 
 Facultatives :
     MAIL_FROM       par défaut = SMTP_USER
