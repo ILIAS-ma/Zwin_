@@ -1,22 +1,13 @@
-Captures d'écran des projets
-============================
+Captures d'écran des projets (format WebP)
+==========================================
 
-Les 4 captures, avec EXACTEMENT ces noms de fichiers :
+Fichiers présents : artebat.webp, paris-car-week.webp, museo-santorsola.webp
 
-  eco-motors-deal.jpg     -> carte "Eco Motors Deal"     — absente (volontaire)
-  paris-car-week.jpg      -> carte "PCW"                 ✔ pariscarweek.com/stand
-  artebat.jpg             -> carte "Artebat"             ✔ artebat.com
-  museo-santorsola.jpg    -> carte "Museo Santorsola"    ✔ museosantorsola.it/fr
+Eco Motors Deal : pas de capture pour l'instant. Déposer eco-motors-deal.webp
+ici (paysage, ~1400 x 875 px, < 80 Ko), puis dans tools/build.py remplacer
+None par "eco-motors-deal" sur la ligne du projet p1 et relancer :
+  python tools/build.py .
 
-Sans image, la carte Eco Motors Deal s'affiche en aplat noir : c'est voulu,
-le site ne casse pas. Déposer un fichier eco-motors-deal.jpg ici suffit à
-l'afficher, sans toucher au code.
-
-Conseils :
-- format paysage, ~1600 x 1100 px, JPG qualité 80 (< 400 Ko par image)
-- la capture est cadrée depuis le haut, un voile sombre est appliqué en bas
-  pour garder le titre lisible.
-- si une image est absente, la carte affiche simplement une couleur unie :
-  le site ne casse pas.
-
-Pour changer un nom de fichier, édite assets/ovia.css (règles .p1 à .p4).
+Conversion rapide (Python + Pillow) :
+  from PIL import Image
+  Image.open("capture.png").convert("RGB").save("nom.webp", "WEBP", quality=76, method=6)

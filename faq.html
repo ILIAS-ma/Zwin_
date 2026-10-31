@@ -2,103 +2,67 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ovia — FAQ</title>
-<meta name="description" content="Délais, méthode, maintenance : toutes les réponses aux questions fréquentes avant de démarrer un projet web avec Ovia.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230E0E0E'/><text x='50' y='74' font-size='70' font-family='Arial' font-weight='bold' fill='%23C8FF00' text-anchor='middle'>O</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Archivo:wght@400;500;600&family=Space+Mono&family=Noto+Kufi+Arabic:wght@700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ | Ovia — questions sur la création de site internet</title>
+<meta name="description" content="Prix, délais, paiement en 3 fois, WordPress, maintenance : les réponses aux questions fréquentes sur la création de votre site internet avec Ovia.">
+<link rel="canonical" href="https://ovia.agency/faq.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Ovia">
+<meta property="og:title" content="FAQ | Ovia — questions sur la création de site internet">
+<meta property="og:description" content="Prix, délais, paiement en 3 fois, WordPress, maintenance : les réponses aux questions fréquentes sur la création de votre site internet avec Ovia.">
+<meta property="og:url" content="https://ovia.agency/faq.html">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232E2BFF'/><text x='50' y='71' font-size='62' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>o</text></svg>">
+<link rel="preload" href="assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/ovia.css">
-<noscript><style>[data-rev]{opacity:1;transform:none}#pt{display:none}.a{height:auto}</style></noscript>
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__ovia)document.documentElement.classList.add('reveal-all')},3000)</script>
+
 </head>
 <body>
-
-<div id="prog"></div>
-<div id="pt" class="in"><div class="panel"><span class="mark">OV<span>I</span>A</span></div></div>
-
-<nav>
-  <a href="index.html" class="logo">OV<span>I</span>A<i class="dot"></i></a>
-  <div class="links">
-    <a href="work.html" data-i18n="nav_work">Réalisations</a>
-    <a href="services.html" data-i18n="nav_services">Services</a>
-    <a href="faq.html" class="active" data-i18n="nav_faq">FAQ</a>
-    <a href="contact.html" data-i18n="nav_contact">Contact</a>
-    <div class="lang">
-      <button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="ar">AR</button>
+<a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+<header class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="logo" aria-label="Ovia">ovia<i></i></a>
+    <nav class="links" aria-label="Navigation principale"><a href="work.html" data-i18n="nav_work">Réalisations</a><a href="services.html" data-i18n="nav_services">Services</a><a href="tarifs.html" data-i18n="nav_pricing">Tarifs</a><a href="faq.html" class="active" aria-current="page" data-i18n="nav_faq">FAQ</a><a href="contact.html" data-i18n="nav_contact">Contact</a></nav>
+    <div class="nav-r">
+      <div class="lang" role="group" aria-label="Langue"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button></div>
+      <a class="btn btn-sm nav-cta" href="contact.html" data-i18n="cta_quote_short">Devis gratuit</a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
     </div>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
-</nav>
-
-<div id="menu">
-  <a class="ml" href="index.html" data-i18n="nav_home">Accueil</a>
-  <a class="ml" href="work.html" data-i18n="nav_work">Réalisations</a>
-  <a class="ml" href="services.html" data-i18n="nav_services">Services</a>
-  <a class="ml" href="faq.html" data-i18n="nav_faq">FAQ</a>
-  <a class="ml" href="contact.html" data-i18n="nav_contact">Contact</a>
-  <div class="mfoot mono"><a href="mailto:contact@ovia.agency">contact@ovia.agency</a></div>
-</div>
-
-<main class="page">
-
-  <section class="page-hero">
-    <div class="mono" data-i18n="faq_tag">— Questions fréquentes</div>
-    <h1>F<span class="o">A</span>Q</h1>
-    <p class="lead" data-i18n="faq_lead">Délais, méthode, accompagnement : les réponses aux questions qu'on nous pose le plus souvent avant de démarrer.</p>
-  </section>
-
-  <section class="faq" style="padding-top:60px">
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq1_q">Quels types de projets réalisez-vous ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq1_a">Sites vitrines, e-commerce, landing pages, applications web, refonte et identité digitale complète. On travaille aussi bien avec des indépendants qu'avec des PME, des startups et des marques établies.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq2_q">Comment ça se passe côté budget ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq2_a">On construit le projet autour de votre budget, pas l'inverse. Notre conviction : un site professionnel doit rester accessible à tout le monde, du premier site d'un indépendant à la refonte d'une marque installée. On en parle lors d'un premier appel, gratuit et sans engagement, puis on vous envoie une proposition claire et détaillée.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq3_q">Quels délais pour un projet web ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq3_a">Une landing page : 2 à 4 semaines. Un site vitrine : 3 à 6 semaines. Un e-commerce : 4 à 8 semaines. Une application sur-mesure : 6 à 16 semaines. On partage un planning détaillé avant de démarrer.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq4_q">Vous faites le design ET le développement ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq4_a">Oui, les deux sous le même toit. Design UI/UX, motion et développement front & back. Ce que vous validez en maquette est exactement ce qui est livré, au pixel près.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq5_q">Qui écrit les textes et fournit les images ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq5_a">Vous pouvez tout fournir, ou nous confier la rédaction et la direction photo. On propose des textes optimisés SEO et une sélection d'images pensée pour votre marque.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq6_q">Que se passe-t-il après la mise en ligne ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq6_a">On ne disparaît pas le jour du lancement. Maintenance, mises à jour, nouvelles pages, suivi des performances : on propose un forfait mensuel, ou on forme votre équipe à gérer le site seule.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq7_q">Puis-je modifier le site moi-même ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq7_a">Oui. On livre un back-office simple et une courte formation vidéo. Textes, images, articles, produits : vous restez autonome sur tout le contenu.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq8_q">Travaillez-vous à l'international ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq8_a">Oui. On accompagne des clients partout dans le monde et on gère les projets 100 % en remote — outils modernes, points réguliers, communication claire.</p></div></div>
-
-    <div class="faq-more" data-rev>
-      <span data-i18n="faq_more">Une autre question en tête ?</span>
-      <a class="btn" href="contact.html" data-i18n="faq_more_btn">Écrivez-nous →</a>
-    </div>
-  </section>
-
-  <div class="marquee"><div class="track">
-    <span>Design</span><span class="dot">✺</span><span>Code</span><span class="dot">✺</span><span>E-commerce</span><span class="dot">✺</span><span>SEO</span><span class="dot">✺</span><span>Motion</span><span class="dot">✺</span><span>Branding</span><span class="dot">✺</span>
-    <span>Design</span><span class="dot">✺</span><span>Code</span><span class="dot">✺</span><span>E-commerce</span><span class="dot">✺</span><span>SEO</span><span class="dot">✺</span><span>Motion</span><span class="dot">✺</span><span>Branding</span><span class="dot">✺</span>
-  </div></div>
-
-  <section class="cta">
-    <h2 data-rev data-i18n-html="cta_title">Votre projet<br>mérite mieux</h2>
-    <a href="contact.html" data-i18n="cta_btn">Démarrer un projet →</a>
-  </section>
-
-  <footer>
-    <div class="big">OV<span>I</span>A</div>
-    <div class="meta mono">
-      <span data-i18n="footer_rights">© 2026 Ovia — Tous droits réservés</span><br>
-      <a href="mailto:contact@ovia.agency">contact@ovia.agency</a>
-    </div>
-  </footer>
-
+  <div id="menu"><nav aria-label="Menu mobile"><a href="index.html" data-i18n="nav_home">Accueil</a><a href="work.html" data-i18n="nav_work">Réalisations</a><a href="services.html" data-i18n="nav_services">Services</a><a href="tarifs.html" data-i18n="nav_pricing">Tarifs</a><a href="faq.html" data-i18n="nav_faq">FAQ</a><a href="contact.html" data-i18n="nav_contact">Contact</a></nav>
+    <a class="btn" href="contact.html" data-i18n="cta_quote">Demander un devis gratuit</a></div>
+</header>
+<main id="main">
+<section class="page-hero"><div class="wrap"><h1 data-i18n="faq_title">Questions fréquentes</h1><p class="lead" data-i18n="faq_lead">Les réponses aux questions qu'on nous pose le plus souvent avant de démarrer.</p></div></section>
+<section class="sec tight"><div class="wrap narrow"><div class="faq"><details class="qa" data-rev><summary><span data-i18n="faq1_q">Quels types de sites réalisez-vous ?</span></summary>
+  <p data-i18n="faq1_a">Sites vitrines, boutiques en ligne, refontes de sites existants, et maintenance au quotidien. On travaille surtout avec des artisans, commerçants, indépendants et TPE/PME en Île-de-France.</p></details><details class="qa" data-rev><summary><span data-i18n="faq2_q">Combien coûte un site ?</span></summary>
+  <p data-i18n="faq2_a">Site Essentiel à partir de 490 €, Site Pro à partir de 890 €, E-commerce à partir de 1 490 €, et Webmaster à partir de 39 €/mois. Prix TTC, TVA non applicable (art. 293 B du CGI). Le devis est gratuit et le prix annoncé est celui que vous payez.</p></details><details class="qa" data-rev><summary><span data-i18n="faq3_q">Puis-je payer en plusieurs fois ?</span></summary>
+  <p data-i18n="faq3_a">Oui, le paiement en 3 fois sans frais est possible sur tous les sites.</p></details><details class="qa" data-rev><summary><span data-i18n="faq4_q">Quels sont les délais ?</span></summary>
+  <p data-i18n="faq4_a">Site Essentiel : environ 2 semaines. Site Pro : 3 à 6 semaines. E-commerce : 4 à 8 semaines. Les délais dépendent aussi de la rapidité avec laquelle vous nous fournissez textes et photos. Un planning est donné avant de démarrer.</p></details><details class="qa" data-rev><summary><span data-i18n="faq5_q">Pourquoi WordPress ?</span></summary>
+  <p data-i18n="faq5_a">C'est un outil connu et solide. Vous restez propriétaire de votre site et vous pouvez modifier vous-même textes et images, avec une courte formation. Si vous préférez, on s'en charge avec l'offre Webmaster.</p></details><details class="qa" data-rev><summary><span data-i18n="faq6_q">Qui écrit les textes et fournit les images ?</span></summary>
+  <p data-i18n="faq6_a">Vous pouvez tout fournir, ou nous confier la rédaction et le choix des images. On propose des textes pensés pour être bien référencés.</p></details><details class="qa" data-rev><summary><span data-i18n="faq7_q">Que se passe-t-il après la mise en ligne ?</span></summary>
+  <p data-i18n="faq7_a">Vous pouvez gérer le site seul, ou souscrire l'offre Webmaster : mises à jour, sécurité, sauvegardes et modifications de contenu, sans engagement.</p></details><details class="qa" data-rev><summary><span data-i18n="faq8_q">Où travaillez-vous ?</span></summary>
+  <p data-i18n="faq8_a">Ovia est basé à Paris. On accompagne des clients de Paris et de toute l'Île-de-France, notamment en Seine-Saint-Denis, par téléphone, en visio ou en rendez-vous.</p></details></div>
+  <p class="more"><span data-i18n="faq_more">Une autre question ?</span> <a class="btn" href="contact.html" data-i18n="cta_quote">Demander un devis gratuit</a></p></div></section>
 </main>
-
-<script src="assets/ovia.js"></script>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <div class="logo">ovia<i></i></div>
+      <p data-i18n="footer_tag">Création de sites internet à Paris et en Île-de-France.</p>
+    </div>
+    <div class="foot-links">
+      <a href="mailto:contact@ovia.agency">contact@ovia.agency</a>
+      <a href="tel:+33651466582">06 51 46 65 82</a>
+      <a href="mentions-legales.html" data-i18n="footer_legal">Mentions légales</a>
+    </div>
+  </div>
+  <div class="wrap foot-bot"><span data-i18n="footer_rights">© 2026 Ovia — Tous droits réservés</span></div>
+</footer>
+<script src="assets/i18n.js" defer></script>
+<script src="assets/ovia.js" defer></script>
 </body>
 </html>

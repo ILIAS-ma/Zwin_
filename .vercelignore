@@ -13,3 +13,6 @@ signature-inline.html
 
 .env
 .env.*
+
+# Outil de generation des pages (inutile en production)
+tools

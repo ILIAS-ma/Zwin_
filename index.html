@@ -2,158 +2,188 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ovia — Studio web créatif</title>
-<meta name="description" content="Ovia, studio web créatif indépendant. On conçoit des sites qui marquent et qui convertissent : design, développement, e-commerce et SEO.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230E0E0E'/><text x='50' y='74' font-size='70' font-family='Arial' font-weight='bold' fill='%23C8FF00' text-anchor='middle'>O</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Archivo:wght@400;500;600&family=Space+Mono&family=Noto+Kufi+Arabic:wght@700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Création site internet Paris | Ovia — sites pour artisans et TPE</title>
+<meta name="description" content="Ovia crée des sites internet modernes à Paris et en Seine-Saint-Denis pour artisans, commerçants et petites entreprises : site vitrine WordPress, e-commerce, refonte et webmaster. Devis gratuit.">
+<link rel="canonical" href="https://ovia.agency/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Ovia">
+<meta property="og:title" content="Création site internet Paris | Ovia — sites pour artisans et TPE">
+<meta property="og:description" content="Ovia crée des sites internet modernes à Paris et en Seine-Saint-Denis pour artisans, commerçants et petites entreprises : site vitrine WordPress, e-commerce, refonte et webmaster. Devis gratuit.">
+<meta property="og:url" content="https://ovia.agency/">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232E2BFF'/><text x='50' y='71' font-size='62' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>o</text></svg>">
+<link rel="preload" href="assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/ovia.css">
-<noscript><style>[data-rev]{opacity:1;transform:none}#pt{display:none}</style></noscript>
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__ovia)document.documentElement.classList.add('reveal-all')},3000)</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://ovia.agency/#ovia", "name": "Ovia", "description": "Studio web à Paris : création de sites vitrines WordPress, e-commerce, refonte, webmaster et SEO local pour artisans, commerçants et TPE/PME.", "url": "https://ovia.agency/", "email": "contact@ovia.agency", "telephone": "+33651466582", "address": {"@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR"}, "areaServed": [{"@type": "City", "name": "Paris"}, {"@type": "AdministrativeArea", "name": "Seine-Saint-Denis"}, {"@type": "AdministrativeArea", "name": "Île-de-France"}], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Création de site vitrine"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Site e-commerce"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Refonte de site"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Webmaster et maintenance"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO local"}}]}</script>
 </head>
 <body>
-
-<div id="prog"></div>
-<div id="pt" class="in"><div class="panel"><span class="mark">OV<span>I</span>A</span></div></div>
-
-<nav>
-  <a href="index.html" class="logo">OV<span>I</span>A<i class="dot"></i></a>
-  <div class="links">
-    <a href="work.html" data-i18n="nav_work">Réalisations</a>
-    <a href="services.html" data-i18n="nav_services">Services</a>
-    <a href="faq.html" data-i18n="nav_faq">FAQ</a>
-    <a href="contact.html" data-i18n="nav_contact">Contact</a>
-    <div class="lang">
-      <button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="ar">AR</button>
+<a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+<header class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="logo" aria-label="Ovia">ovia<i></i></a>
+    <nav class="links" aria-label="Navigation principale"><a href="work.html" data-i18n="nav_work">Réalisations</a><a href="services.html" data-i18n="nav_services">Services</a><a href="tarifs.html" data-i18n="nav_pricing">Tarifs</a><a href="faq.html" data-i18n="nav_faq">FAQ</a><a href="contact.html" data-i18n="nav_contact">Contact</a></nav>
+    <div class="nav-r">
+      <div class="lang" role="group" aria-label="Langue"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button></div>
+      <a class="btn btn-sm nav-cta" href="contact.html" data-i18n="cta_quote_short">Devis gratuit</a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
     </div>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
-</nav>
+  <div id="menu"><nav aria-label="Menu mobile"><a href="index.html" data-i18n="nav_home">Accueil</a><a href="work.html" data-i18n="nav_work">Réalisations</a><a href="services.html" data-i18n="nav_services">Services</a><a href="tarifs.html" data-i18n="nav_pricing">Tarifs</a><a href="faq.html" data-i18n="nav_faq">FAQ</a><a href="contact.html" data-i18n="nav_contact">Contact</a></nav>
+    <a class="btn" href="contact.html" data-i18n="cta_quote">Demander un devis gratuit</a></div>
+</header>
+<main id="main">
+<section class="hero"><div class="wrap">
+  <p class="kicker" data-i18n="hero_kicker">Studio web · Paris</p>
+  <h1 data-i18n="hero_h1">Des sites web modernes pour les artisans et petites entreprises, à prix accessible</h1>
+  <p class="sub" data-i18n="hero_sub">Site vitrine, boutique en ligne, refonte ou entretien : Ovia vous accompagne à Paris et en Île-de-France, avec des prix clairs et un seul interlocuteur.</p>
+  <div class="acts">
+    <a class="btn btn-lg" href="contact.html" data-i18n="cta_quote">Demander un devis gratuit</a>
+    <a class="btn btn-line btn-lg" href="tarifs.html" data-i18n="hero_c2">Voir les tarifs</a>
+  </div>
+  <ul class="trust"><li data-i18n="trust1">Premier appel gratuit</li><li data-i18n="trust2">Prix transparents</li><li data-i18n="trust3">Paiement en 3 fois sans frais</li></ul>
+</div></section>
 
-<div id="menu">
-  <a class="ml" href="index.html" data-i18n="nav_home">Accueil</a>
-  <a class="ml" href="work.html" data-i18n="nav_work">Réalisations</a>
-  <a class="ml" href="services.html" data-i18n="nav_services">Services</a>
-  <a class="ml" href="faq.html" data-i18n="nav_faq">FAQ</a>
-  <a class="ml" href="contact.html" data-i18n="nav_contact">Contact</a>
-  <div class="mfoot mono"><a href="mailto:contact@ovia.agency">contact@ovia.agency</a></div>
-</div>
+<section class="stats" aria-label="Chiffres clés"><div class="wrap stats-in"><div class="stat"><div class="n todo" data-i18n="stat_todo">[À REMPLIR]</div><div class="l" data-i18n="stat_projects">Projets livrés</div></div><div class="stat"><div class="n todo" data-i18n="stat_todo">[À REMPLIR]</div><div class="l" data-i18n="stat_years">Années d'expérience</div></div><div class="stat"><div class="n todo" data-i18n="stat_todo">[À REMPLIR]</div><div class="l" data-i18n="stat_clients">Clients accompagnés</div></div></div></section>
 
-<main class="page">
+<section class="sec" id="work"><div class="wrap">
+  <div class="sec-head" data-rev><h2 data-i18n="home_work_title">Réalisations</h2><p class="lead" data-i18n="home_work_lead">Quelques projets récents : le besoin du client, et ce qu'on a mis en place.</p></div>
+  <div class="projs three"><article class="proj" data-rev>
+  <div class="pimg"><picture><source srcset="assets/img/artebat.webp" type="image/webp"><img src="assets/img/artebat.webp" alt="Capture du site Artebat" width="1400" height="788" loading="lazy" decoding="async"></picture></div>
+  <div class="pbody">
+    <p class="ptype" data-i18n="p3_type">Site vitrine B2B · WordPress</p>
+    <h3>Artebat</h3>
+    <p class="pneed"><b data-i18n="label_need">Le besoin</b> <span data-i18n="p3_need">Présenter une activité de rénovation énergétique et générer des demandes d'audit grâce à un simulateur CEE.</span></p>
+    <p class="pres"><b data-i18n="label_result">Le résultat</b> <span class="todo" data-i18n="result_todo">[À REMPLIR : résultat obtenu pour ce client]</span></p>
+  </div>
+</article><article class="proj" data-rev>
+  <div class="pimg"><picture><source srcset="assets/img/paris-car-week.webp" type="image/webp"><img src="assets/img/paris-car-week.webp" alt="Capture du site Paris Car Week" width="1400" height="875" loading="lazy" decoding="async"></picture></div>
+  <div class="pbody">
+    <p class="ptype" data-i18n="p2_type">Réservation en ligne · Paiement Stripe</p>
+    <h3>Paris Car Week</h3>
+    <p class="pneed"><b data-i18n="label_need">Le besoin</b> <span data-i18n="p2_need">Réserver des essais et des espaces d'exposition en ligne, avec paiement intégré.</span></p>
+    <p class="pres"><b data-i18n="label_result">Le résultat</b> <span class="todo" data-i18n="result_todo">[À REMPLIR : résultat obtenu pour ce client]</span></p>
+  </div>
+</article><article class="proj" data-rev>
+  <div class="pimg"><picture><source srcset="assets/img/museo-santorsola.webp" type="image/webp"><img src="assets/img/museo-santorsola.webp" alt="Capture du site Museo Santorsola" width="1400" height="683" loading="lazy" decoding="async"></picture></div>
+  <div class="pbody">
+    <p class="ptype" data-i18n="p4_type">Refonte · WordPress · Maintenance</p>
+    <h3>Museo Santorsola</h3>
+    <p class="pneed"><b data-i18n="label_need">Le besoin</b> <span data-i18n="p4_need">Refondre le site d'un musée florentin : expositions, résidences d'artistes, bilingue IT / FR, maintenu dans la durée.</span></p>
+    <p class="pres"><b data-i18n="label_result">Le résultat</b> <span class="todo" data-i18n="result_todo">[À REMPLIR : résultat obtenu pour ce client]</span></p>
+  </div>
+</article></div>
+  <p class="more" data-rev><a class="btn btn-line" href="work.html" data-i18n="btn_all_work">Voir toutes les réalisations</a></p>
+</div></section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="glow g1"></div>
-    <div class="glow g2"></div>
-    <div class="inner">
-      <div class="kicker mono"><b></b><span data-i18n="hero_kicker">Studio web créatif — Paris & Remote</span></div>
-      <h1>
-        <span class="ln"><span data-i18n="hero_line1">On crée des sites</span></span>
-        <span class="ln"><span><span data-i18n="hero_line2">qui</span> <span class="swap" id="swap"></span></span></span>
-      </h1>
-      <p class="sub" data-i18n="hero_sub">Ovia est un studio web indépendant. Design, développement, e-commerce et SEO — tout sous un même toit, sans agence intermédiaire.</p>
-      <div class="acts">
-        <a class="btn" href="contact.html" data-i18n="hero_cta1">Démarrer un projet</a>
-        <a class="btn ghost" href="work.html" data-i18n="hero_cta2">Voir nos réalisations</a>
-      </div>
-    </div>
-    <div class="scroll mono"><i></i><span data-i18n="hero_scroll">Défiler</span></div>
-    <div class="side mono" data-i18n-html="hero_side">Studio créatif<br>'23 — '26</div>
-  </section>
+<section class="sec alt" id="services"><div class="wrap">
+  <div class="sec-head" data-rev><h2 data-i18n="home_svc_title">Ce qu'on fait pour vous</h2><p class="lead" data-i18n="svc_lead">Du site vitrine à l'entretien au quotidien : tout ce qu'il faut, avec un seul interlocuteur.</p></div>
+  <div class="svc-grid"><article class="svc hl-wp" data-rev><span class="badge" data-i18n="svc_wp_badge">Notre spécialité</span>
+  <p class="stag" data-i18n="sv1_s">WordPress ou sur-mesure</p>
+  <h3 data-i18n="sv1_h">Création de site vitrine</h3>
+  <p data-i18n="sv1_p">Un site clair qui présente votre activité et vous apporte des demandes de contact. Vous pouvez le modifier vous-même.</p>
+</article><article class="svc" data-rev>
+  <p class="stag" data-i18n="sv2_s">WooCommerce ou Shopify</p>
+  <h3 data-i18n="sv2_h">Site e-commerce</h3>
+  <p data-i18n="sv2_p">Une boutique simple à gérer, avec paiement en ligne sécurisé, pour vendre vos produits sans vous compliquer la vie.</p>
+</article><article class="svc" data-rev>
+  <p class="stag" data-i18n="sv3_s">Plus moderne, plus rapide</p>
+  <h3 data-i18n="sv3_h">Refonte de site existant</h3>
+  <p data-i18n="sv3_p">Votre site est daté ou lent ? On reprend votre contenu et on le remet au goût du jour, lisible sur téléphone.</p>
+</article><article class="svc hl-web" data-rev><span class="badge" data-i18n="svc_web_badge">Offre phare</span>
+  <p class="stag" data-i18n="sv4_s">Mises à jour, sécurité, sauvegardes</p>
+  <h3 data-i18n="sv4_h">Webmaster & maintenance</h3>
+  <p data-i18n="sv4_p">Mises à jour, sécurité, sauvegardes, modifications de contenu et petites évolutions : vous n'avez plus à vous en occuper.</p>
+</article><article class="svc" data-rev>
+  <p class="stag" data-i18n="sv5_s">Être trouvé à Paris</p>
+  <h3 data-i18n="sv5_h">SEO local & performance</h3>
+  <p data-i18n="sv5_p">Fiche Google, pages locales et site rapide, pour apparaître quand on cherche votre métier près de chez vous.</p>
+</article></div>
+</div></section>
 
-  <!-- MANIFESTO -->
-  <section class="manifesto">
-    <p data-rev data-i18n-html="manifesto_big">On crée des sites web qui font tourner les têtes et qui convertissent <span class="hl">vraiment</span>. Pas juste de jolies pages.</p>
-    <p class="small" data-rev data-i18n="manifesto_small">Ovia est un studio web créatif indépendant. Design, développement, e-commerce et SEO — tout sous un même toit.</p>
-  </section>
+<section class="sec alt" id="how"><div class="wrap">
+  <div class="sec-head" data-rev><h2 data-i18n="how_title">Comment ça marche</h2><p class="lead" data-i18n="how_lead">Trois étapes simples, sans jargon et sans surprise.</p></div>
+  <ol class="steps"><li class="step" data-rev><span class="num">1</span>
+  <h3 data-i18n="s1_h">Appel gratuit</h3><p data-i18n="s1_p">On échange 20 à 30 minutes sur votre activité, vos clients et ce que vous attendez du site. Vous repartez avec un devis clair.</p></li><li class="step" data-rev><span class="num">2</span>
+  <h3 data-i18n="s2_h">Maquette</h3><p data-i18n="s2_p">Vous voyez le design de votre site avant que la mise en ligne ne commence, et vous demandez des ajustements jusqu'à ce qu'il vous plaise.</p></li><li class="step" data-rev><span class="num">3</span>
+  <h3 data-i18n="s3_h">Mise en ligne</h3><p data-i18n="s3_p">On met le site en ligne, on vérifie tout sur mobile et ordinateur, puis on vous montre comment le modifier vous-même.</p></li></ol>
+</div></section>
 
-  <!-- MARQUEE -->
-  <div class="marquee"><div class="track">
-    <span>Design</span><span class="dot">✺</span><span>Code</span><span class="dot">✺</span><span>E-commerce</span><span class="dot">✺</span><span>SEO</span><span class="dot">✺</span><span>Motion</span><span class="dot">✺</span><span>Branding</span><span class="dot">✺</span>
-    <span>Design</span><span class="dot">✺</span><span>Code</span><span class="dot">✺</span><span>E-commerce</span><span class="dot">✺</span><span>SEO</span><span class="dot">✺</span><span>Motion</span><span class="dot">✺</span><span>Branding</span><span class="dot">✺</span>
-  </div></div>
+<section class="sec" id="tarifs"><div class="wrap">
+  <div class="sec-head" data-rev><h2 data-i18n="home_pr_title">Des tarifs clairs</h2><p class="lead" data-i18n="pr_lead">Des prix annoncés clairement, sans frais cachés. Un bon rapport qualité-prix, pour que votre site soit un vrai outil de travail.</p></div>
+  <div class="plans"><article class="plan" data-rev>
+  <h3 data-i18n="pl1_n">Site Essentiel</h3>
+  <p class="ptag" data-i18n="pl1_t">Pour se lancer en ligne simplement.</p>
+  <p class="price"><span class="from" data-i18n="pr_from">à partir de</span> <b>490&nbsp;€</b></p>
+  <ul><li data-i18n="pl1_f0">Jusqu'à 3 pages</li><li data-i18n="pl1_f1">WordPress, que vous pouvez modifier</li><li data-i18n="pl1_f2">Adapté au téléphone (responsive)</li><li data-i18n="pl1_f3">Formulaire de contact</li><li data-i18n="pl1_f4">Fiche Google (Google Business Profile)</li></ul>
+  <p class="delay"><span data-i18n="pr_delay">Délai indicatif :</span> <b data-i18n="pl1_d">2 semaines</b></p>
+  <a class="btn btn-line" href="contact.html?offre=essentiel" data-i18n="cta_quote">Demander un devis gratuit</a>
+</article><article class="plan pop" data-rev><span class="pill" data-i18n="pr_popular">La plus choisie</span>
+  <h3 data-i18n="pl2_n">Site Pro</h3>
+  <p class="ptag" data-i18n="pl2_t">Pour recevoir des demandes de devis.</p>
+  <p class="price"><span class="from" data-i18n="pr_from">à partir de</span> <b>890&nbsp;€</b></p>
+  <ul><li data-i18n="pl2_f0">Jusqu'à 7 pages</li><li data-i18n="pl2_f1">SEO local</li><li data-i18n="pl2_f2">Formulaire de devis</li><li data-i18n="pl2_f3">Avis clients affichés sur le site</li><li data-i18n="pl2_f4">Formation pour modifier le site</li></ul>
+  <p class="delay"><span data-i18n="pr_delay">Délai indicatif :</span> <b data-i18n="pl2_d">3 à 6 semaines</b></p>
+  <a class="btn" href="contact.html?offre=pro" data-i18n="cta_quote">Demander un devis gratuit</a>
+</article><article class="plan" data-rev>
+  <h3 data-i18n="pl3_n">E-commerce</h3>
+  <p class="ptag" data-i18n="pl3_t">Pour vendre vos produits en ligne.</p>
+  <p class="price"><span class="from" data-i18n="pr_from">à partir de</span> <b>1 490&nbsp;€</b></p>
+  <ul><li data-i18n="pl3_f0">Boutique WooCommerce ou Shopify</li><li data-i18n="pl3_f1">Paiement en ligne</li><li data-i18n="pl3_f2">Jusqu'à 30 produits</li><li data-i18n="pl3_f3">Formation à la gestion de la boutique</li></ul>
+  <p class="delay"><span data-i18n="pr_delay">Délai indicatif :</span> <b data-i18n="pl3_d">4 à 8 semaines</b></p>
+  <a class="btn btn-line" href="contact.html?offre=ecommerce" data-i18n="cta_quote">Demander un devis gratuit</a>
+</article><article class="plan" data-rev>
+  <h3 data-i18n="pl4_n">Webmaster</h3>
+  <p class="ptag" data-i18n="pl4_t">Pour ne plus vous soucier de votre site.</p>
+  <p class="price"><span class="from" data-i18n="pr_from">à partir de</span> <b>39&nbsp;€</b> <span class="per" data-i18n="pr_month">/ mois</span></p>
+  <ul><li data-i18n="pl4_f0">Mises à jour</li><li data-i18n="pl4_f1">Sécurité</li><li data-i18n="pl4_f2">Sauvegardes</li><li data-i18n="pl4_f3">Modifications de contenu illimitées</li><li data-i18n="pl4_f4">Sans engagement</li></ul>
+  
+  <a class="btn btn-line" href="contact.html?offre=webmaster" data-i18n="cta_quote">Demander un devis gratuit</a>
+</article></div><p class="vat" data-i18n="vat_note">Prix TTC. TVA non applicable, art. 293 B du CGI.</p>
+  <div class="offers"><h3 data-i18n="of_title">Les offres du moment</h3><ul><li data-rev><b data-i18n="of1_t">Offre de lancement</b><span data-i18n="of1_p">-15 % sur tous les sites jusqu'au [À REMPLIR : date]</span></li><li data-rev><b data-i18n="of2_t">Pack Site + Webmaster</b><span data-i18n="of2_p">Les 3 premiers mois de maintenance offerts</span></li><li data-rev><b data-i18n="of3_t">Paiement en 3 fois</b><span data-i18n="of3_p">Sans frais</span></li><li data-rev><b data-i18n="of4_t">Premier appel et devis</b><span data-i18n="of4_p">Gratuits, sans engagement</span></li></ul></div>
+</div></section>
 
-  <!-- WORK -->
-  <section id="work">
-    <div class="sec-head">
-      <h2 data-rev data-i18n="work_title">Réalisations</h2>
-      <span class="mono" data-rev data-i18n="work_tag">— Nos 4 plus beaux projets</span>
-    </div>
-    <div class="work">
-      <a class="case p1" href="work.html" data-rev><div class="bg"></div><div class="veil"></div><div class="ct"><div><div class="cat" data-i18n="proj1_cat">Marketplace · 2025</div><h3 data-i18n="proj1_name">Eco Motors Deal</h3></div><span class="arrow">↗</span></div></a>
-      <a class="case p2" href="work.html" data-rev><div class="bg"></div><div class="veil"></div><div class="ct"><div><div class="cat" data-i18n="proj2_cat">Location · Stripe · 2025</div><h3 data-i18n="proj2_name">PCW</h3></div><span class="arrow">↗</span></div></a>
-      <a class="case p3" href="work.html" data-rev><div class="bg"></div><div class="veil"></div><div class="ct"><div><div class="cat" data-i18n="proj3_cat">Vitrine B2B · WordPress · 2024</div><h3 data-i18n="proj3_name">Artebat</h3></div><span class="arrow">↗</span></div></a>
-      <a class="case p4" href="work.html" data-rev><div class="bg"></div><div class="veil"></div><div class="ct"><div><div class="cat" data-i18n="proj4_cat">Refonte · WordPress · Maintenance</div><h3 data-i18n="proj4_name">Museo Santorsola</h3></div><span class="arrow">↗</span></div></a>
-    </div>
-  </section>
+<section class="sec" id="avis"><div class="wrap">
+  <div class="sec-head" data-rev><h2 data-i18n="rev_title">Ils nous font confiance</h2></div>
+  <div class="revs"><figure class="rev" data-rev><blockquote class="todo" data-i18n="rev_q">[À REMPLIR : avis du client, 2 à 3 phrases]</blockquote>
+  <figcaption class="todo" data-i18n="rev_who">[À REMPLIR : prénom, activité, ville]</figcaption></figure><figure class="rev" data-rev><blockquote class="todo" data-i18n="rev_q">[À REMPLIR : avis du client, 2 à 3 phrases]</blockquote>
+  <figcaption class="todo" data-i18n="rev_who">[À REMPLIR : prénom, activité, ville]</figcaption></figure><figure class="rev" data-rev><blockquote class="todo" data-i18n="rev_q">[À REMPLIR : avis du client, 2 à 3 phrases]</blockquote>
+  <figcaption class="todo" data-i18n="rev_who">[À REMPLIR : prénom, activité, ville]</figcaption></figure></div>
+</div></section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="sec-head">
-      <h2 data-rev data-i18n="services_title">Services</h2>
-      <span class="mono" data-rev data-i18n="services_tag">— Ce qu'on fait</span>
-    </div>
-    <div class="by-grid">
-      <div class="by by1" data-rev><span class="tag" data-i18n="svc1_tag">Stratégie</span><h4 data-i18n="svc1_h">Stratégie & Conseil</h4><p data-i18n="svc1_p">Audit, positionnement, architecture de l'information et roadmap digitale sur-mesure.</p></div>
-      <div class="by by3" data-rev><span class="tag" data-i18n="svc2_tag">Design</span><h4 data-i18n="svc2_h">Design & UX</h4><p data-i18n="svc2_p">Interfaces soignées et intuitives qui convertissent. Du wireframe au pixel final.</p></div>
-      <div class="by by2" data-rev><span class="tag" data-i18n="svc3_tag">Code</span><h4 data-i18n="svc3_h">Développement web</h4><p data-i18n="svc3_p">Code propre, rapide et évolutif. Next.js, React, WordPress, Shopify.</p></div>
-      <div class="by by4" data-rev><span class="tag" data-i18n="svc4_tag">E-commerce</span><h4 data-i18n="svc4_h">E-commerce</h4><p data-i18n="svc4_p">Boutiques rapides et rentables, pensées pour vendre et fidéliser.</p></div>
-      <div class="by by5" data-rev><span class="tag" data-i18n="svc5_tag">Motion</span><h4 data-i18n="svc5_h">Motion & 3D</h4><p data-i18n="svc5_p">Animations, interactions et expériences 3D qui donnent vie à votre marque.</p></div>
-      <div class="by by6" data-rev><span class="tag" data-i18n="svc6_tag">SEO</span><h4 data-i18n="svc6_h">SEO & Performance</h4><p data-i18n="svc6_p">Visibilité durable, vitesse et bonnes pratiques techniques pour durer.</p></div>
-    </div>
-  </section>
+<section class="sec alt" id="faq"><div class="wrap narrow">
+  <div class="sec-head" data-rev><h2 data-i18n="home_faq_title">Vos questions</h2></div>
+  <div class="faq"><details class="qa" data-rev><summary><span data-i18n="faq2_q">Combien coûte un site ?</span></summary>
+  <p data-i18n="faq2_a">Site Essentiel à partir de 490 €, Site Pro à partir de 890 €, E-commerce à partir de 1 490 €, et Webmaster à partir de 39 €/mois. Prix TTC, TVA non applicable (art. 293 B du CGI). Le devis est gratuit et le prix annoncé est celui que vous payez.</p></details><details class="qa" data-rev><summary><span data-i18n="faq4_q">Quels sont les délais ?</span></summary>
+  <p data-i18n="faq4_a">Site Essentiel : environ 2 semaines. Site Pro : 3 à 6 semaines. E-commerce : 4 à 8 semaines. Les délais dépendent aussi de la rapidité avec laquelle vous nous fournissez textes et photos. Un planning est donné avant de démarrer.</p></details><details class="qa" data-rev><summary><span data-i18n="faq5_q">Pourquoi WordPress ?</span></summary>
+  <p data-i18n="faq5_a">C'est un outil connu et solide. Vous restez propriétaire de votre site et vous pouvez modifier vous-même textes et images, avec une courte formation. Si vous préférez, on s'en charge avec l'offre Webmaster.</p></details><details class="qa" data-rev><summary><span data-i18n="faq7_q">Que se passe-t-il après la mise en ligne ?</span></summary>
+  <p data-i18n="faq7_a">Vous pouvez gérer le site seul, ou souscrire l'offre Webmaster : mises à jour, sécurité, sauvegardes et modifications de contenu, sans engagement.</p></details></div>
+  <p class="more" data-rev><a class="btn btn-line" href="faq.html" data-i18n="faq_all">Toutes les questions</a></p>
+</div></section>
 
-  <!-- STATS -->
-  <section id="about">
-    <div class="stats">
-      <div class="stat" data-rev><div class="n" data-count="40" data-suffix="+">0</div><div class="l mono" data-i18n="stat_projects">Projets livrés</div></div>
-      <div class="stat" data-rev><div class="n" data-count="5">0</div><div class="l mono" data-i18n="stat_years">Ans d'expertise</div></div>
-      <div class="stat" data-rev><div class="n" data-count="100" data-suffix="%">0</div><div class="l mono" data-i18n="stat_clients">Clients satisfaits</div></div>
-    </div>
-  </section>
-
-  <!-- FAQ (aperçu) -->
-  <section class="faq">
-    <div class="faq-head">
-      <h2 data-rev data-i18n="faq_title">FAQ</h2>
-      <span class="mono" data-rev data-i18n="faq_tag">— Questions fréquentes</span>
-    </div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq1_q">Quels types de projets réalisez-vous ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq1_a">Sites vitrines, e-commerce, landing pages, applications web, refonte et identité digitale complète.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq2_q">Comment ça se passe côté budget ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq2_a">On construit le projet autour de votre budget, pas l'inverse. Notre conviction : un site professionnel doit rester accessible à tout le monde, du premier site d'un indépendant à la refonte d'une marque installée. On en parle lors d'un premier appel, gratuit et sans engagement, puis on vous envoie une proposition claire et détaillée.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq3_q">Quels délais pour un projet web ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq3_a">Une landing page : 2 à 4 semaines. Un e-commerce : 4 à 8 semaines.</p></div></div>
-
-    <div class="qa" data-rev><div class="q"><h3 data-i18n="faq4_q">Vous faites le design ET le développement ?</h3><span class="sign"></span></div>
-      <div class="a"><p data-i18n="faq4_a">Oui, les deux sous le même toit.</p></div></div>
-
-    <div class="faq-more" data-rev>
-      <span data-i18n="faq_more">Une autre question en tête ?</span>
-      <a class="btn ghost" href="faq.html" data-i18n="faq_all">Toutes les questions →</a>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <h2 data-rev data-i18n-html="cta_title">Votre projet<br>mérite mieux</h2>
-    <a href="contact.html" data-i18n="cta_btn">Démarrer un projet →</a>
-  </section>
-
-  <footer>
-    <div class="big">OV<span>I</span>A</div>
-    <div class="meta mono">
-      <span data-i18n="footer_rights">© 2026 Ovia — Tous droits réservés</span><br>
-      <a href="mailto:contact@ovia.agency">contact@ovia.agency</a>
-    </div>
-  </footer>
-
+<section class="sec cta"><div class="wrap">
+  <h2 data-i18n="cta_title">Parlons de votre site</h2><p class="lead" data-i18n="cta_text">Premier appel et devis gratuits, sans engagement. Réponse sous 48 h ouvrées.</p>
+  <a class="btn btn-lg" href="contact.html" data-i18n="cta_quote">Demander un devis gratuit</a>
+</div></section>
 </main>
-
-<script src="assets/ovia.js"></script>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <div class="logo">ovia<i></i></div>
+      <p data-i18n="footer_tag">Création de sites internet à Paris et en Île-de-France.</p>
+    </div>
+    <div class="foot-links">
+      <a href="mailto:contact@ovia.agency">contact@ovia.agency</a>
+      <a href="tel:+33651466582">06 51 46 65 82</a>
+      <a href="mentions-legales.html" data-i18n="footer_legal">Mentions légales</a>
+    </div>
+  </div>
+  <div class="wrap foot-bot"><span data-i18n="footer_rights">© 2026 Ovia — Tous droits réservés</span></div>
+</footer>
+<script src="assets/i18n.js" defer></script>
+<script src="assets/ovia.js" defer></script>
 </body>
 </html>
