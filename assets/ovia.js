@@ -61,7 +61,7 @@ const I18N = {
     f_fail:"L'envoi n'a pas fonctionné. Écrivez-nous directement à <a href=\"mailto:contact@ovia.agency\">contact@ovia.agency</a>.",
     f_err_req:"Ce champ est obligatoire", f_err_mail:"Adresse email invalide",
     a_write:"Écrivez-nous", a_call:"Appelez-nous", a_studios:"Localisation",
-    off_paris:"Paris", off_paris_s:"Île-de-France", off_casa:"Casablanca", off_casa_s:"Maroc", off_remote:"Remote", off_remote_s:"Disponible partout",
+    off_paris:"Paris", off_paris_s:"Île-de-France", off_remote:"Remote", off_remote_s:"Disponible partout",
 
     cta_title:"Votre projet<br>mérite mieux", cta_btn:"Demander un devis gratuit →",
     footer_rights:"© 2026 Ovia — Tous droits réservés",
@@ -134,7 +134,7 @@ const I18N = {
     f_fail:"Something went wrong. Write to us directly at <a href=\"mailto:contact@ovia.agency\">contact@ovia.agency</a>.",
     f_err_req:"This field is required", f_err_mail:"Invalid email address",
     a_write:"Write to us", a_call:"Call us", a_studios:"Based in",
-    off_paris:"Paris", off_paris_s:"Île-de-France", off_casa:"Casablanca", off_casa_s:"Morocco", off_remote:"Remote", off_remote_s:"Available worldwide",
+    off_paris:"Paris", off_paris_s:"Île-de-France", off_remote:"Remote", off_remote_s:"Available worldwide",
 
     cta_title:"Your project<br>deserves better", cta_btn:"Get a free quote →",
     footer_rights:"© 2026 Ovia — All rights reserved",

@@ -371,5 +371,7 @@ fieldset.radios legend{font-family:'Space Mono',monospace;text-transform:upperca
   form.brief{grid-template-columns:1fr}
   .radios .opt{padding:15px 28px}
 }
-.work .case:nth-child(3):last-child{grid-column:1/-1}
-@media(max-width:860px){.work .case:nth-child(3):last-child{grid-column:auto}}
+/* 3 réalisations alignées sur une seule ligne */
+.work{grid-template-columns:repeat(3,1fr)}
+@media(max-width:1024px){.work{grid-template-columns:1fr 1fr}.work .case:nth-child(3):last-child{grid-column:1/-1}}
+@media(max-width:860px){.work{grid-template-columns:1fr}.work .case:nth-child(3):last-child{grid-column:auto}}
