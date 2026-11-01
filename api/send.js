@@ -67,14 +67,25 @@ module.exports = async (req, res) => {
   /* Piege a robots : champ cache rempli => on repond OK sans rien envoyer */
   if(champs.website) return res.status(200).send('OK');
 
+  /* Champ texte sur une seule ligne, longueur limitee (pas de retour a la ligne dans les en-tetes) */
+  const ligne = (v, max) => String(v || '').replace(/[\r\n]+/g, ' ').trim().slice(0, max);
+
   const nom     = String(champs.name    || '').trim();
   const email   = String(champs.email   || '').trim();
   const message = String(champs.message || '').trim();
+  const tel     = ligne(champs.phone, 40);
+  const societe = ligne(champs.company, 120);
+  const secteur = ligne(champs.sector, 120);
+  const projet  = ligne(champs.project_type, 60);
+  const aSite   = ligne(champs.has_site, 10);
+  const urlSite = ligne(champs.site_url, 200);
+  const budget  = ligne(champs.budget, 40);
 
-  /* Verifications, identiques a la version PHP */
-  if(!nom || !message)                          return res.status(400).send('ERR');
+  /* Verifications : nom, email valide et consentement RGPD obligatoires */
+  if(!nom)                                       return res.status(400).send('ERR');
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return res.status(400).send('ERR');
-  if(nom.length > 120 || message.length > 5000) return res.status(400).send('ERR');
+  if(!champs.consent)                            return res.status(400).send('ERR');
+  if(nom.length > 120 || message.length > 5000)  return res.status(400).send('ERR');
 
   if(!CFG.user || !CFG.pass){
     console.error('[ovia] SMTP_USER ou SMTP_PASS absent des variables d\'environnement Vercel');
@@ -88,12 +99,19 @@ module.exports = async (req, res) => {
   const emailPropre = email.replace(/[\r\n]+/g, '');
 
   const texte =
-    'Nouveau message envoye depuis le formulaire de ovia.agency\n' +
+    'Nouvelle demande de devis envoyee depuis ovia.agency\n' +
     '------------------------------------------------------------\n\n' +
-    `Nom     : ${nomPropre}\n` +
-    `Email   : ${emailPropre}\n` +
-    `Date    : ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}\n\n` +
-    `Message :\n${message}\n\n` +
+    `Nom         : ${nomPropre}\n` +
+    `Email       : ${emailPropre}\n` +
+    `Telephone   : ${tel || '-'}\n` +
+    `Entreprise  : ${societe || '-'}\n` +
+    `Secteur     : ${secteur || '-'}\n` +
+    `Projet      : ${projet || '-'}\n` +
+    `Site actuel : ${aSite || '-'}${urlSite ? ' (' + urlSite + ')' : ''}\n` +
+    `Budget      : ${budget || 'Non precise'}\n` +
+    'Consentement RGPD : oui\n' +
+    `Date        : ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}\n\n` +
+    `Message :\n${message || '(aucun message)'}\n\n` +
     '------------------------------------------------------------\n' +
     `Reponds simplement a cet email pour ecrire a ${nomPropre}.\n`;
 
@@ -114,7 +132,7 @@ module.exports = async (req, res) => {
       from: { name: CFG.fromName, address: CFG.from },
       to: CFG.to,
       replyTo: { name: nomPropre, address: emailPropre },
-      subject: `Nouveau message du site — ${nomPropre}`,
+      subject: `Demande de devis — ${nomPropre}`,
       text: texte,
     });
 

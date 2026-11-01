@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ovia — Contact</title>
-<meta name="description" content="Parlez-nous de votre projet web. Ovia répond sous 48h — devis détaillé, sans engagement.">
+<title>Ovia — Demander un devis</title>
+<meta name="description" content="Demandez votre devis gratuit pour votre site web. Devis personnalisé, adapté à votre budget. Réponse sous 48h ouvrées.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230E0E0E'/><text x='50' y='74' font-size='70' font-family='Arial' font-weight='bold' fill='%23C8FF00' text-anchor='middle'>O</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Archivo:wght@400;500;600&family=Space+Mono&family=Noto+Kufi+Arabic:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/ovia.css">
 <noscript><style>[data-rev]{opacity:1;transform:none}#pt{display:none}</style></noscript>
 </head>
@@ -25,7 +25,7 @@
     <a href="faq.html" data-i18n="nav_faq">FAQ</a>
     <a href="contact.html" class="active" data-i18n="nav_contact">Contact</a>
     <div class="lang">
-      <button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="ar">AR</button>
+      <button data-lang="fr">FR</button><button data-lang="en">EN</button>
     </div>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
@@ -43,39 +43,94 @@
 <main class="page">
 
   <section class="page-hero">
-    <div class="mono" data-i18n="contact_kicker">(Contact) — Créons quelque chose</div>
-    <h1 data-i18n-html="contact_title">Parlons<br><span class="o">de vous</span></h1>
-    <p class="lead" data-i18n="contact_lead">Une idée, un brief ou juste une intuition ? Parlez-nous de votre projet. On répond sous 48h — pas de bot, juste l'équipe.</p>
+    <div class="mono" data-i18n="contact_kicker">(Devis) — Gratuit et sans engagement</div>
+    <h1 data-i18n-html="contact_title">Demandez<br><span class="o">un devis</span></h1>
+    <p class="lead" data-i18n="contact_lead">Parlez-nous de votre projet : on vous prépare un devis personnalisé, adapté à votre budget. Comptez 2 minutes. On répond sous 48h ouvrées — pas de bot, juste l'équipe.</p>
   </section>
 
   <div class="contact-wrap">
 
-    <!-- 3 champs seulement. L'envoi part vers /api/send : fonction serverless sur Vercel,
+    <!-- Demande de devis. L'envoi part vers /api/send : fonction serverless sur Vercel,
          ou send.php via une redirection .htaccess chez Hostinger. -->
     <form class="brief" id="form" action="/api/send" method="post" novalidate>
-      <div class="field" data-rev>
+      <div class="field half" data-rev>
         <label class="mono" for="f-name" data-i18n="f_name">Votre nom *</label>
         <input id="f-name" name="name" type="text" autocomplete="name" required>
         <div class="err mono">Ce champ est obligatoire</div>
       </div>
 
-      <div class="field" data-rev>
+      <div class="field half" data-rev>
         <label class="mono" for="f-email" data-i18n="f_email">Votre email *</label>
         <input id="f-email" name="email" type="email" autocomplete="email" required>
         <div class="err mono">Adresse email invalide</div>
       </div>
 
+      <div class="field half" data-rev>
+        <label class="mono" for="f-phone" data-i18n="f_phone">Téléphone (facultatif)</label>
+        <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+      </div>
+
+      <div class="field half" data-rev>
+        <label class="mono" for="f-company" data-i18n="f_company">Nom de l'entreprise</label>
+        <input id="f-company" name="company" type="text" autocomplete="organization">
+      </div>
+
+      <div class="field half" data-rev>
+        <label class="mono" for="f-sector" data-i18n="f_sector">Votre métier</label>
+        <input id="f-sector" name="sector" type="text">
+      </div>
+
+      <div class="field half" data-rev>
+        <label class="mono" for="f-type" data-i18n="f_type">Type de projet</label>
+        <select id="f-type" name="project_type">
+          <option value="" data-i18n="t_choose">Choisissez…</option>
+          <option value="Site vitrine" data-i18n="t_vitrine">Site vitrine</option>
+          <option value="E-commerce" data-i18n="t_ecom">E-commerce</option>
+          <option value="Landing page" data-i18n="t_landing">Landing page</option>
+          <option value="Refonte" data-i18n="t_refonte">Refonte</option>
+          <option value="Autre" data-i18n="t_autre">Autre</option>
+        </select>
+      </div>
+
+      <fieldset class="field radios" data-rev>
+        <legend class="mono" data-i18n="f_hassite">Avez-vous déjà un site ?</legend>
+        <label class="opt"><input type="radio" name="has_site" value="Oui"><span data-i18n="f_yes">Oui</span></label>
+        <label class="opt"><input type="radio" name="has_site" value="Non"><span data-i18n="f_no">Non</span></label>
+      </fieldset>
+
+      <div id="url-wrap">
+        <div class="field">
+          <label class="mono" for="f-url" data-i18n="f_url">Adresse de votre site</label>
+          <input id="f-url" name="site_url" type="text" inputmode="url" autocomplete="url" placeholder="www.">
+        </div>
+      </div>
+
       <div class="field" data-rev>
-        <label class="mono" for="f-message" data-i18n="f_message">Votre message *</label>
-        <textarea id="f-message" name="message" rows="4" required></textarea>
-        <div class="err mono">Ce champ est obligatoire</div>
+        <label class="mono" for="f-budget" data-i18n="f_budget">Budget approximatif (facultatif)</label>
+        <select id="f-budget" name="budget">
+          <option value="" data-i18n="b_unknown">Je ne sais pas</option>
+          <option value="Moins de 1 000 €" data-i18n="b_1">Moins de 1 000 €</option>
+          <option value="1 000 à 3 000 €" data-i18n="b_2">1 000 à 3 000 €</option>
+          <option value="Plus de 3 000 €" data-i18n="b_3">Plus de 3 000 €</option>
+        </select>
+        <p class="help" data-i18n="f_budget_help">Utilisé uniquement pour préparer votre devis. Jamais affiché publiquement.</p>
+      </div>
+
+      <div class="field" data-rev>
+        <label class="mono" for="f-message" data-i18n="f_message">Votre message (facultatif)</label>
+        <textarea id="f-message" name="message" rows="4"></textarea>
       </div>
 
       <!-- piège à robots : invisible, doit rester vide -->
       <div class="hp" aria-hidden="true"><label>Ne pas remplir<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
+      <div class="field consent" data-rev>
+        <label class="check"><input type="checkbox" id="f-consent" name="consent" value="oui" required><span data-i18n-html="f_consent">J'accepte qu'Ovia utilise ces informations pour répondre à ma demande de devis, conformément à la <a href="politique-confidentialite.html">politique de confidentialité</a>. *</span></label>
+        <div class="err mono">Merci de cocher cette case pour envoyer votre demande</div>
+      </div>
+
       <div class="submit" data-rev>
-        <button class="btn" type="submit" id="send"><span data-i18n="f_submit">Envoyer</span> <span>→</span></button>
+        <button class="btn" type="submit" id="send"><span data-i18n="f_submit">Envoyer ma demande</span> <span>→</span></button>
         <span class="note" data-i18n="f_note">Réponse sous 48h ouvrées. Vos informations restent confidentielles.</span>
       </div>
 
@@ -130,7 +185,8 @@
     <div class="big">OV<span>I</span>A</div>
     <div class="meta mono">
       <span data-i18n="footer_rights">© 2026 Ovia — Tous droits réservés</span><br>
-      <a href="mailto:contact@ovia.agency">contact@ovia.agency</a>
+      <a href="mailto:contact@ovia.agency">contact@ovia.agency</a><br>
+      <a href="mentions-legales.html" data-i18n="footer_legal">Mentions légales</a><a href="politique-confidentialite.html" data-i18n="footer_privacy">Politique de confidentialité</a>
     </div>
   </footer>
 

@@ -1,5 +1,5 @@
 /* ============================================================
-   OVIA — script partagé : i18n (FR/EN/AR), hero animé,
+   OVIA — script partagé : i18n (FR/EN), hero animé,
    révélations, accordéon FAQ, formulaire, transitions de page.
    Aucune dépendance externe.
    ============================================================ */
@@ -12,18 +12,17 @@ const I18N = {
     hero_line1:"On crée des sites",
     hero_line2:"qui",
     hero_sub:"Ovia est un studio web indépendant. Design, développement, e-commerce et SEO — tout sous un même toit, sans agence intermédiaire.",
-    hero_cta1:"Démarrer un projet", hero_cta2:"Voir nos réalisations",
+    hero_cta1:"Demander un devis gratuit", hero_cta2:"Voir nos réalisations",
     hero_scroll:"Défiler", hero_side:"Studio créatif<br>'23 — '26",
 
     manifesto_big:"On crée des sites web qui font tourner les têtes et qui convertissent <span class='hl'>vraiment</span>. Pas juste de jolies pages.",
     manifesto_small:"Ovia est un studio web créatif indépendant. Design, développement, e-commerce et SEO — tout sous un même toit.",
 
-    work_title:"Réalisations", work_tag:"— Nos 4 plus beaux projets",
+    work_title:"Réalisations", work_tag:"— Nos projets",
     work_lead:"Des projets pensés pour durer : une direction artistique forte, un code propre et des résultats mesurables.",
-    proj1_cat:"Marketplace · 2025", proj1_name:"Eco Motors Deal", proj1_desc:"Marketplace de véhicules électriques : recherche multicritère, fiches détaillées et mise en relation acheteurs / vendeurs.",
-    proj2_cat:"Location · Stripe · 2025", proj2_name:"PCW", proj2_desc:"Paris Car Week : plateforme de réservation d'essais et d'espaces, paiement en ligne intégré via Stripe.",
-    proj3_cat:"Vitrine B2B · WordPress · 2024", proj3_name:"Artebat", proj3_desc:"Site vitrine B2B pour la rénovation énergétique : simulateur CEE, génération de leads et suivi des demandes d'audit.",
-    proj4_cat:"Refonte · WordPress · Maintenance", proj4_name:"Museo Santorsola", proj4_desc:"Refonte complète du site du musée florentin : expositions, résidences d'artistes, bilingue IT / FR et maintenance continue.",
+    proj1_cat:"Plateforme sur-mesure · Laravel · 2026", proj1_name:"Echo Clip", proj1_desc:"Plateforme où des créateurs lancent des campagnes de clips TikTok et où des clippeurs participent, payés à la vue ou classés en concours : vues relevées automatiquement, classements en direct, retraits suivis et export Excel des statistiques.",
+    proj2_cat:"Vitrine B2B · WordPress · 2024", proj2_name:"Artebat", proj2_desc:"Site vitrine B2B pour la rénovation énergétique : simulateur CEE, génération de leads et suivi des demandes d'audit.",
+    proj3_cat:"Refonte · WordPress · Maintenance", proj3_name:"Museo Santorsola", proj3_desc:"Refonte complète du site du musée florentin : expositions, résidences d'artistes, bilingue IT / FR et maintenance continue.",
 
     stat_projects:"Projets livrés", stat_years:"Ans d'expertise", stat_clients:"Clients satisfaits",
 
@@ -54,18 +53,30 @@ const I18N = {
     faq8_q:"Travaillez-vous à l'international ?", faq8_a:"Oui. On accompagne des clients partout dans le monde et on gère les projets 100 % en remote — outils modernes, points réguliers, communication claire.",
     faq_more:"Une autre question en tête ?", faq_more_btn:"Écrivez-nous →", faq_all:"Toutes les questions →",
 
-    contact_title:"Parlons<br><span class='o'>de vous</span>", contact_kicker:"(Contact) — Créons quelque chose",
-    contact_lead:"Une idée, un brief ou juste une intuition ? Parlez-nous de votre projet. On répond sous 48h — pas de bot, juste l'équipe.",
-    f_name:"Votre nom *", f_email:"Votre email *", f_message:"Votre message *",
-    f_submit:"Envoyer", f_sending:"Envoi…", f_note:"Réponse sous 48h ouvrées. Vos informations restent confidentielles.",
+    contact_title:"Demandez<br><span class='o'>un devis</span>", contact_kicker:"(Devis) — Gratuit et sans engagement",
+    contact_lead:"Parlez-nous de votre projet : on vous prépare un devis personnalisé, adapté à votre budget. Comptez 2 minutes. On répond sous 48h ouvrées — pas de bot, juste l'équipe.",
+    f_name:"Votre nom *", f_email:"Votre email *", f_message:"Votre message (facultatif)",
+    f_submit:"Envoyer ma demande", f_sending:"Envoi…", f_note:"Réponse sous 48h ouvrées. Vos informations restent confidentielles.",
     f_done:"Bien reçu. <span>On revient vers vous sous 48h. ✺</span>",
     f_fail:"L'envoi n'a pas fonctionné. Écrivez-nous directement à <a href=\"mailto:contact@ovia.agency\">contact@ovia.agency</a>.",
     f_err_req:"Ce champ est obligatoire", f_err_mail:"Adresse email invalide",
     a_write:"Écrivez-nous", a_call:"Appelez-nous", a_studios:"Localisation",
     off_paris:"Paris", off_paris_s:"Île-de-France", off_casa:"Casablanca", off_casa_s:"Maroc", off_remote:"Remote", off_remote_s:"Disponible partout",
 
-    cta_title:"Votre projet<br>mérite mieux", cta_btn:"Démarrer un projet →",
-    footer_rights:"© 2026 Ovia — Tous droits réservés"
+    cta_title:"Votre projet<br>mérite mieux", cta_btn:"Demander un devis gratuit →",
+    footer_rights:"© 2026 Ovia — Tous droits réservés",
+    how_title:"Comment ça marche", how_tag:"— En 3 étapes",
+    how1_h:"Vous demandez un devis", how1_p:"Remplissez le formulaire en 2 minutes : votre activité, votre projet et, si vous le souhaitez, votre budget approximatif.",
+    how2_h:"Appel gratuit de 15 minutes", how2_p:"On vous appelle pour comprendre votre besoin et répondre à vos questions. Sans engagement.",
+    how3_h:"Proposition claire et détaillée sous 48h", how3_p:"Vous recevez un devis personnalisé, adapté à votre budget, qui détaille ce qui est prévu. Vous décidez ensuite, sans pression.",
+    f_phone:"Téléphone (facultatif)", f_company:"Nom de l'entreprise", f_sector:"Votre métier",
+    f_type:"Type de projet", t_choose:"Choisissez…", t_vitrine:"Site vitrine", t_ecom:"E-commerce", t_landing:"Landing page", t_refonte:"Refonte", t_autre:"Autre",
+    f_hassite:"Avez-vous déjà un site ?", f_yes:"Oui", f_no:"Non", f_url:"Adresse de votre site",
+    f_budget:"Budget approximatif (facultatif)", f_budget_help:"Utilisé uniquement pour préparer votre devis. Jamais affiché publiquement.",
+    b_unknown:"Je ne sais pas", b_1:"Moins de 1 000 €", b_2:"1 000 à 3 000 €", b_3:"Plus de 3 000 €",
+    f_consent:"J'accepte qu'Ovia utilise ces informations pour répondre à ma demande de devis, conformément à la <a href=\"politique-confidentialite.html\">politique de confidentialité</a>. *",
+    f_err_consent:"Merci de cocher cette case pour envoyer votre demande",
+    footer_legal:"Mentions légales", footer_privacy:"Politique de confidentialité"
   },
 
   en:{
@@ -74,18 +85,17 @@ const I18N = {
     hero_line1:"We build websites",
     hero_line2:"that",
     hero_sub:"Ovia is an independent web studio. Design, development, e-commerce and SEO — all under one roof, with no agency in between.",
-    hero_cta1:"Start a project", hero_cta2:"See our work",
+    hero_cta1:"Get a free quote", hero_cta2:"See our work",
     hero_scroll:"Scroll", hero_side:"Creative studio<br>'23 — '26",
 
     manifesto_big:"We build websites that turn heads and <span class='hl'>actually</span> convert. Not just pretty pages.",
     manifesto_small:"Ovia is an independent creative web studio. Design, development, e-commerce and SEO — all under one roof.",
 
-    work_title:"Work", work_tag:"— Our 4 finest projects",
+    work_title:"Work", work_tag:"— Our projects",
     work_lead:"Projects built to last: strong art direction, clean code and results you can measure.",
-    proj1_cat:"Marketplace · 2025", proj1_name:"Eco Motors Deal", proj1_desc:"Electric vehicle marketplace: multi-criteria search, detailed listings and buyer / seller matching.",
-    proj2_cat:"Booking · Stripe · 2025", proj2_name:"PCW", proj2_desc:"Paris Car Week: booking platform for test drives and exhibition spaces, with Stripe payments built in.",
-    proj3_cat:"B2B website · WordPress · 2024", proj3_name:"Artebat", proj3_desc:"B2B website for energy renovation: CEE simulator, lead generation and audit request tracking.",
-    proj4_cat:"Redesign · WordPress · Maintenance", proj4_name:"Museo Santorsola", proj4_desc:"Full redesign for the Florentine museum: exhibitions, artist residencies, IT / FR bilingual and ongoing maintenance.",
+    proj1_cat:"Custom platform · Laravel · 2026", proj1_name:"Echo Clip", proj1_desc:"Platform where creators launch TikTok clip campaigns and clippers join in, paid per view or ranked in contests: automatic view tracking, live rankings, tracked payouts and an Excel export of the stats.",
+    proj2_cat:"B2B website · WordPress · 2024", proj2_name:"Artebat", proj2_desc:"B2B website for energy renovation: CEE simulator, lead generation and audit request tracking.",
+    proj3_cat:"Redesign · WordPress · Maintenance", proj3_name:"Museo Santorsola", proj3_desc:"Full redesign for the Florentine museum: exhibitions, artist residencies, IT / FR bilingual and ongoing maintenance.",
 
     stat_projects:"Projects delivered", stat_years:"Years of craft", stat_clients:"Happy clients",
 
@@ -116,88 +126,37 @@ const I18N = {
     faq8_q:"Do you work internationally?", faq8_a:"Yes. We work with clients worldwide and run projects fully remote — modern tools, regular check-ins, clear communication.",
     faq_more:"Still have a question?", faq_more_btn:"Write to us →", faq_all:"All questions →",
 
-    contact_title:"Let's talk<br><span class='o'>about you</span>", contact_kicker:"(Contact) — Let's make something",
-    contact_lead:"A bold idea, a brief, or just a hunch? Tell us about your project. We reply within 48h — no bots, just the team.",
-    f_name:"Your name *", f_email:"Your email *", f_message:"Your message *",
-    f_submit:"Send", f_sending:"Sending…", f_note:"We reply within 48 working hours. Your details stay confidential.",
+    contact_title:"Request<br><span class='o'>a quote</span>", contact_kicker:"(Quote) — Free, no commitment",
+    contact_lead:"Tell us about your project: we prepare a personalised quote, tailored to your budget. Allow 2 minutes. We reply within 48 working hours — no bots, just the team.",
+    f_name:"Your name *", f_email:"Your email *", f_message:"Your message (optional)",
+    f_submit:"Send my request", f_sending:"Sending…", f_note:"We reply within 48 working hours. Your details stay confidential.",
     f_done:"Got it. <span>We'll be in touch within 48h. ✺</span>",
     f_fail:"Something went wrong. Write to us directly at <a href=\"mailto:contact@ovia.agency\">contact@ovia.agency</a>.",
     f_err_req:"This field is required", f_err_mail:"Invalid email address",
     a_write:"Write to us", a_call:"Call us", a_studios:"Based in",
     off_paris:"Paris", off_paris_s:"Île-de-France", off_casa:"Casablanca", off_casa_s:"Morocco", off_remote:"Remote", off_remote_s:"Available worldwide",
 
-    cta_title:"Your project<br>deserves better", cta_btn:"Start a project →",
-    footer_rights:"© 2026 Ovia — All rights reserved"
-  },
-
-  ar:{
-    nav_home:"الرئيسية", nav_work:"أعمالنا", nav_services:"خدماتنا", nav_faq:"الأسئلة", nav_contact:"تواصل",
-    hero_kicker:"استوديو ويب إبداعي — باريس وعن بُعد",
-    hero_line1:"نصنع مواقع",
-    hero_line2:"",
-    hero_sub:"أوفيا استوديو ويب مستقل. التصميم والتطوير والتجارة الإلكترونية وتحسين محركات البحث — كلّها تحت سقف واحد، بلا وسطاء.",
-    hero_cta1:"ابدأ مشروعاً", hero_cta2:"شاهد أعمالنا",
-    hero_scroll:"مرّر", hero_side:"استوديو إبداعي<br>٢٣ — ٢٦",
-
-    manifesto_big:"نبني مواقع إلكترونية تأسر الأنظار وتُحقّق <span class='hl'>تحويلاً حقيقياً</span>. لا مجرّد صفحات جميلة.",
-    manifesto_small:"أوفيا استوديو ويب إبداعي مستقل. التصميم والتطوير والتجارة الإلكترونية وتحسين محركات البحث — كلّها تحت سقف واحد.",
-
-    work_title:"أعمالنا", work_tag:"— أجمل أربعة مشاريع لدينا",
-    work_lead:"مشاريع مصمّمة لتدوم: إدارة فنية قوية، شيفرة نظيفة، ونتائج قابلة للقياس.",
-    proj1_cat:"سوق إلكتروني · ٢٠٢٥", proj1_name:"Eco Motors Deal", proj1_desc:"سوق إلكتروني للسيارات الكهربائية: بحث متعدّد المعايير، بطاقات تفصيلية وربط بين البائعين والمشترين.",
-    proj2_cat:"حجز · Stripe · ٢٠٢٥", proj2_name:"PCW", proj2_desc:"Paris Car Week: منصّة لحجز تجارب القيادة والمساحات مع الدفع الإلكتروني عبر Stripe.",
-    proj3_cat:"موقع B2B · WordPress · ٢٠٢٤", proj3_name:"Artebat", proj3_desc:"موقع B2B للترميم الطاقي: محاكي شهادات توفير الطاقة، جذب العملاء ومتابعة طلبات التدقيق.",
-    proj4_cat:"إعادة تصميم · WordPress · صيانة", proj4_name:"Museo Santorsola", proj4_desc:"إعادة تصميم كاملة لموقع المتحف في فلورنسا: المعارض، إقامات الفنانين، بلغتين IT / FR مع صيانة مستمرّة.",
-
-    stat_projects:"مشروعاً منجزاً", stat_years:"سنوات خبرة", stat_clients:"رضا العملاء",
-
-    services_title:"خدماتنا", services_tag:"— ما نقدّمه",
-    services_lead:"فريق صغير، جهة تواصل واحدة، وكل المهارات اللازمة من الاستراتيجية حتى يوم الإطلاق.",
-    svc1_tag:"استراتيجية", svc1_h:"الاستراتيجية والاستشارات", svc1_p:"تدقيق وتموضع وهندسة معلومات وخارطة طريق رقمية مخصّصة.",
-    svc2_tag:"تصميم", svc2_h:"التصميم وتجربة المستخدم", svc2_p:"واجهات أنيقة وسهلة تُحقّق التحويل. من المخطّط إلى البكسل الأخير.",
-    svc3_tag:"برمجة", svc3_h:"تطوير الويب", svc3_p:"شيفرة نظيفة وسريعة وقابلة للتوسّع. Next.js وReact وWordPress وShopify.",
-    svc4_tag:"تجارة", svc4_h:"التجارة الإلكترونية", svc4_p:"متاجر سريعة ومربحة مبنية للبيع والحفاظ على العملاء.",
-    svc5_tag:"حركة", svc5_h:"الحركة والأبعاد الثلاثية", svc5_p:"رسوم متحرّكة وتفاعلات وتجارب ثلاثية الأبعاد تُحيي علامتك.",
-    svc6_tag:"سيو", svc6_h:"تحسين محركات البحث والأداء", svc6_p:"ظهور مستدام وسرعة وأسس تقنية متينة تدوم.",
-
-    process_title:"منهجيتنا", process_tag:"— كيف نعمل",
-    step1_h:"الاستكشاف", step1_p:"نستمع ونسأل ونؤطّر. الأهداف والجمهور والمنافسة: نضع الأساس قبل رسم أي شاشة.",
-    step2_h:"الإدارة الفنية", step2_p:"نماذج وخطوط وألوان وحركة. توافق على تصميم دقيق — لا على وعد.",
-    step3_h:"التطوير", step3_p:"تنفيذ متقن: متجاوب وسريع وسهل الوصول. تتابع التقدّم عبر رابط تجريبي مباشر.",
-    step4_h:"الإطلاق والمتابعة", step4_p:"النشر والسيو التقني والتدريب ومتابعة الأداء في الأشهر التالية.",
-
-    faq_title:"الأسئلة", faq_tag:"— الأسئلة المتكرّرة",
-    faq_lead:"المدد والمنهجية والمرافقة: إجابات عن أكثر ما يُسأل قبل بدء المشروع.",
-    faq1_q:"ما أنواع المشاريع التي تنجزونها؟", faq1_a:"مواقع تعريفية ومتاجر إلكترونية وصفحات هبوط وتطبيقات ويب وإعادة تصميم وهوية رقمية كاملة. نعمل مع المستقلّين والشركات الصغيرة والناشئة والعلامات الراسخة.",
-    faq2_q:"كيف نتعامل مع الميزانية؟", faq2_a:"نبني المشروع حول ميزانيتك، لا العكس. قناعتنا أن الموقع الاحترافي يجب أن يبقى في متناول الجميع، من أول موقع لمستقل إلى إعادة تصميم علامة راسخة. نناقش ذلك في مكالمة أولى مجانية وبلا التزام، ثم نرسل عرضاً واضحاً ومفصّلاً.",
-    faq3_q:"ما المدّة المعتادة للمشروع؟", faq3_a:"صفحة هبوط: ٢–٤ أسابيع. موقع تعريفي: ٣–٦ أسابيع. متجر إلكتروني: ٤–٨ أسابيع. تطبيق مخصّص: ٦–١٦ أسبوعاً. نشارك خطة زمنية مفصّلة قبل البدء.",
-    faq4_q:"هل تتولّون التصميم والتطوير معاً؟", faq4_a:"نعم، الاثنان تحت سقف واحد. تصميم واجهات وحركة وتطوير أمامي وخلفي. ما توافق عليه في التصميم هو تماماً ما يُسلَّم.",
-    faq5_q:"من يكتب النصوص ويوفّر الصور؟", faq5_a:"يمكنك توفير كل شيء، أو تكليفنا بالكتابة والإدارة الفنية. نقدّم نصوصاً مُحسّنة لمحركات البحث واختياراً للصور يناسب علامتك.",
-    faq6_q:"ماذا يحدث بعد الإطلاق؟", faq6_a:"لا نختفي يوم الإطلاق. صيانة وتحديثات وصفحات جديدة ومتابعة أداء: اختر باقة شهرية، أو ندرّب فريقك لإدارة الموقع بنفسه.",
-    faq7_q:"هل يمكنني تعديل الموقع بنفسي؟", faq7_a:"نعم. تحصل على لوحة تحكّم بسيطة وشرح مصوّر قصير. النصوص والصور والمقالات والمنتجات: تبقى مستقلاً تماماً في إدارة المحتوى.",
-    faq8_q:"هل تعملون دولياً؟", faq8_a:"نعم. نعمل مع عملاء حول العالم وندير المشاريع عن بُعد بالكامل — أدوات حديثة ومتابعة منتظمة وتواصل واضح.",
-    faq_more:"لديك سؤال آخر؟", faq_more_btn:"راسلنا ←", faq_all:"كل الأسئلة ←",
-
-    contact_title:"لنتحدّث<br><span class='o'>عنك</span>", contact_kicker:"(تواصل) — لنصنع شيئاً معاً",
-    contact_lead:"فكرة جريئة أو موجز أو مجرّد حدس؟ حدّثنا عن مشروعك. نردّ خلال ٤٨ ساعة — لا روبوتات، بل الفريق مباشرة.",
-    f_name:"اسمك *", f_email:"بريدك الإلكتروني *", f_message:"رسالتك *",
-    f_submit:"إرسال", f_sending:"جارٍ الإرسال…", f_note:"نردّ خلال ٤٨ ساعة عمل. تبقى معلوماتك سرّية.",
-    f_done:"وصلنا طلبك. <span>سنعاود التواصل خلال ٤٨ ساعة. ✺</span>",
-    f_fail:"تعذّر الإرسال. راسلنا مباشرة على <a href=\"mailto:contact@ovia.agency\">contact@ovia.agency</a>.",
-    f_err_req:"هذا الحقل مطلوب", f_err_mail:"بريد إلكتروني غير صالح",
-    a_write:"راسلنا", a_call:"اتّصل بنا", a_studios:"موقعنا",
-    off_paris:"باريس", off_paris_s:"إيل دو فرانس", off_casa:"الدار البيضاء", off_casa_s:"المغرب", off_remote:"عن بُعد", off_remote_s:"متاحون في كل مكان",
-
-    cta_title:"مشروعك<br>يستحقّ الأفضل", cta_btn:"ابدأ مشروعاً ←",
-    footer_rights:"© ٢٠٢٦ أوفيا — جميع الحقوق محفوظة"
+    cta_title:"Your project<br>deserves better", cta_btn:"Get a free quote →",
+    footer_rights:"© 2026 Ovia — All rights reserved",
+    how_title:"How it works", how_tag:"— In 3 steps",
+    how1_h:"You request a quote", how1_p:"Fill in the form in 2 minutes: your business, your project and, if you wish, your approximate budget.",
+    how2_h:"Free 15-minute call", how2_p:"We call you to understand your needs and answer your questions. No commitment.",
+    how3_h:"Clear, detailed proposal within 48h", how3_p:"You receive a personalised quote, tailored to your budget, detailing what is planned. You then decide, with no pressure.",
+    f_phone:"Phone (optional)", f_company:"Company name", f_sector:"Your trade",
+    f_type:"Project type", t_choose:"Choose…", t_vitrine:"Showcase site", t_ecom:"E-commerce", t_landing:"Landing page", t_refonte:"Redesign", t_autre:"Other",
+    f_hassite:"Do you already have a website?", f_yes:"Yes", f_no:"No", f_url:"Your website address",
+    f_budget:"Approximate budget (optional)", f_budget_help:"Used only to prepare your quote. Never displayed publicly.",
+    b_unknown:"I don't know", b_1:"Under €1,000", b_2:"€1,000 to €3,000", b_3:"Over €3,000",
+    f_consent:"I agree that Ovia uses this information to answer my quote request, as described in the <a href=\"politique-confidentialite.html\">privacy policy</a>. *",
+    f_err_consent:"Please tick this box to send your request",
+    footer_legal:"Legal notice", footer_privacy:"Privacy policy"
   }
 };
 
 /* Le mot qui tourne dans le hero : [texte, couleur d'accent] */
 const SWAP_WORDS = {
   fr:[["marquent","#2E2BFF"],["convertissent","#FF2E8B"],["rapportent","#FF5A00"],["inspirent","#6A2EFF"],["durent","#159E4B"]],
-  en:[["stand out","#2E2BFF"],["convert","#FF2E8B"],["sell","#FF5A00"],["inspire","#6A2EFF"],["last","#159E4B"]],
-  ar:[["تُبهر","#2E2BFF"],["تُحوّل","#FF2E8B"],["تبيع","#FF5A00"],["تُلهم","#6A2EFF"],["تدوم","#159E4B"]]
+  en:[["stand out","#2E2BFF"],["convert","#FF2E8B"],["sell","#FF5A00"],["inspire","#6A2EFF"],["last","#159E4B"]]
 };
 
 /* ---------------- 2. LANGUE ---------------- */
@@ -211,7 +170,6 @@ function applyLang(lang){
   const dict = I18N[lang];
 
   document.documentElement.lang = lang;
-  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
 
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const k = el.getAttribute('data-i18n');
@@ -360,8 +318,8 @@ function initForm(){
     const input = field.querySelector('input,textarea');
     if(!input || !input.required) return true;
     const v = input.value.trim();
-    let ok = v.length > 0;
-    let msg = I18N[LANG].f_err_req;
+    let ok = input.type === 'checkbox' ? input.checked : v.length > 0;
+    let msg = input.type === 'checkbox' ? I18N[LANG].f_err_consent : I18N[LANG].f_err_req;
     if(ok && input.type === 'email'){
       ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
       if(!ok) msg = I18N[LANG].f_err_mail;
@@ -379,6 +337,17 @@ function initForm(){
       if(f.classList.contains('invalid')) check(f);
     });
   });
+
+  // L'adresse du site actuel n'apparaît que si la réponse est « Oui »
+  const urlWrap = document.getElementById('url-wrap');
+  const syncUrl = ()=>{
+    const yes = form.querySelector('input[name="has_site"][value="Oui"]');
+    if(urlWrap) urlWrap.hidden = !(yes && yes.checked);
+  };
+  form.querySelectorAll('input[name="has_site"]').forEach(r=>r.addEventListener('change', syncUrl));
+  syncUrl();
+  const consent = document.getElementById('f-consent');
+  if(consent) consent.addEventListener('change', ()=>check(consent.closest('.field')));
 
   const fail = document.getElementById('fail');
   const done = document.getElementById('done');
@@ -411,6 +380,7 @@ function initForm(){
     e.preventDefault();
     let ok = true, firstBad = null;
     form.querySelectorAll('.field').forEach(f=>{
+      if(f.closest('[hidden]')) return;
       if(!check(f)){ ok = false; if(!firstBad) firstBad = f; }
     });
     if(!ok){

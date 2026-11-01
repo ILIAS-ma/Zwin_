@@ -165,9 +165,22 @@ $nom     = trim($_POST['name']    ?? '');
 $email   = trim($_POST['email']   ?? '');
 $message = trim($_POST['message'] ?? '');
 
-/* Vérifications */
-if($nom === '' || $message === '')                      terminer(false, $ajax, $cfg);
+/* Champs facultatifs : une seule ligne, longueur limitée */
+function ligne($v, $max){
+  return mb_substr(trim(str_replace(["\r", "\n"], ' ', (string) $v)), 0, $max);
+}
+$tel     = ligne($_POST['phone']        ?? '', 40);
+$societe = ligne($_POST['company']      ?? '', 120);
+$secteur = ligne($_POST['sector']       ?? '', 120);
+$projet  = ligne($_POST['project_type'] ?? '', 60);
+$aSite   = ligne($_POST['has_site']     ?? '', 10);
+$urlSite = ligne($_POST['site_url']     ?? '', 200);
+$budget  = ligne($_POST['budget']       ?? '', 40);
+
+/* Vérifications : nom, email valide et consentement RGPD obligatoires */
+if($nom === '')                                         terminer(false, $ajax, $cfg);
 if(!filter_var($email, FILTER_VALIDATE_EMAIL))          terminer(false, $ajax, $cfg);
+if(empty($_POST['consent']))                            terminer(false, $ajax, $cfg);
 if(mb_strlen($nom) > 120 || mb_strlen($message) > 5000) terminer(false, $ajax, $cfg);
 
 /* Sécurité : on interdit les retours à la ligne dans les en-têtes
@@ -175,15 +188,22 @@ if(mb_strlen($nom) > 120 || mb_strlen($message) > 5000) terminer(false, $ajax, $
 $nomPropre   = str_replace(["\r", "\n"], ' ', $nom);
 $emailPropre = str_replace(["\r", "\n"], '', $email);
 
-$sujet = "Nouveau message du site — $nomPropre";
+$sujet = "Demande de devis — $nomPropre";
 $sujetEncode = '=?UTF-8?B?' . base64_encode($sujet) . '?=';
 
-$corps = "Nouveau message envoyé depuis le formulaire de ovia.agency\n"
+$corps = "Nouvelle demande de devis envoyée depuis ovia.agency\n"
        . "------------------------------------------------------------\n\n"
-       . "Nom     : $nomPropre\n"
-       . "Email   : $emailPropre\n"
-       . "Date    : " . date('d/m/Y à H:i') . "\n\n"
-       . "Message :\n$message\n\n"
+       . "Nom         : $nomPropre\n"
+       . "Email       : $emailPropre\n"
+       . "Téléphone   : " . ($tel !== '' ? $tel : '-') . "\n"
+       . "Entreprise  : " . ($societe !== '' ? $societe : '-') . "\n"
+       . "Secteur     : " . ($secteur !== '' ? $secteur : '-') . "\n"
+       . "Projet      : " . ($projet !== '' ? $projet : '-') . "\n"
+       . "Site actuel : " . ($aSite !== '' ? $aSite : '-') . ($urlSite !== '' ? " ($urlSite)" : '') . "\n"
+       . "Budget      : " . ($budget !== '' ? $budget : 'Non précisé') . "\n"
+       . "Consentement RGPD : oui\n"
+       . "Date        : " . date('d/m/Y à H:i') . "\n\n"
+       . "Message :\n" . ($message !== '' ? $message : '(aucun message)') . "\n\n"
        . "------------------------------------------------------------\n"
        . "Réponds simplement à cet email pour écrire à $nomPropre.\n";
 
