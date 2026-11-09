@@ -136,14 +136,15 @@ load();setInterval(load,30000);
 </script></body></html>`;
 
 module.exports = async (req, res) => {
-  const user = process.env.DASH_USER || '';
-  const pass = process.env.DASH_PASS || '';
-  const cle = process.env.DESK_KEY || '';
+  // trim() : un espace ou retour a la ligne invisible colle dans Vercel ne doit pas bloquer.
+  const user = (process.env.DASH_USER || '').trim();
+  const pass = (process.env.DASH_PASS || '').trim();
+  const cle = (process.env.DESK_KEY || '').trim().toLowerCase();
 
-  // Non configure ou mauvaise cle dans l'adresse : la page "n'existe pas".
   // Sans cle configuree, ou avec une mauvaise cle dans l'adresse : la page "n'existe pas".
   const url = new URL(req.url, 'http://x');
-  if(cle.length < 3 || !same(url.searchParams.get('k') || '', cle)) return notFound(res);
+  const kUrl = (url.searchParams.get('k') || '').trim().toLowerCase();
+  if(cle.length < 3 || !same(kUrl, cle)) return notFound(res);
 
   // Bonne cle mais configuration incomplete : on nomme la variable en cause (jamais de valeur).
   // La cle est courte (ex. un prenom) : le VRAI verrou est le mot de passe, d'ou 12 caracteres minimum.
