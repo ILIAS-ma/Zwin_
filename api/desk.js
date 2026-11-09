@@ -141,10 +141,21 @@ module.exports = async (req, res) => {
   const cle = process.env.DESK_KEY || '';
 
   // Non configure ou mauvaise cle dans l'adresse : la page "n'existe pas".
-  // La cle est courte (ex. un prenom) : le VRAI verrou est le mot de passe, d'ou 12 caracteres minimum.
-  if(!user || pass.length < 12 || cle.length < 3) return notFound(res);
+  // Sans cle configuree, ou avec une mauvaise cle dans l'adresse : la page "n'existe pas".
   const url = new URL(req.url, 'http://x');
-  if(!same(url.searchParams.get('k') || '', cle)) return notFound(res);
+  if(cle.length < 3 || !same(url.searchParams.get('k') || '', cle)) return notFound(res);
+
+  // Bonne cle mais configuration incomplete : on nomme la variable en cause (jamais de valeur).
+  // La cle est courte (ex. un prenom) : le VRAI verrou est le mot de passe, d'ou 12 caracteres minimum.
+  const manque = [];
+  if(!user) manque.push('DASH_USER');
+  if(pass.length < 12) manque.push('DASH_PASS (12 caracteres minimum)');
+  if(!process.env.DESK_ALPACA_KEY) manque.push('DESK_ALPACA_KEY');
+  if(!process.env.DESK_ALPACA_SECRET) manque.push('DESK_ALPACA_SECRET');
+  if(manque.length){
+    baseHeaders(res, 'text/plain; charset=utf-8');
+    return res.status(503).send('Configuration incomplete : ' + manque.join(', '));
+  }
 
   // Mot de passe obligatoire (Basic).
   const h = req.headers.authorization || '';
