@@ -49,18 +49,24 @@ async function alp(path, params){
 async function donnees(){
   const out = { error: null };
   try {
-    const acc = await alp('/v2/account');
+    // Les 5 appels partent EN MEME TEMPS (au lieu de l'un apres l'autre) : ~5x plus rapide.
+    const [acc, clock, positions, orders, h] = await Promise.all([
+      alp('/v2/account'),
+      alp('/v2/clock'),
+      alp('/v2/positions'),
+      alp('/v2/orders', { status: 'all', limit: 30, direction: 'desc' }),
+      alp('/v2/account/portfolio/history', { period: '1M', timeframe: '1D' })
+    ]);
     out.account = { status: acc.status, equity: acc.equity, cash: acc.cash,
                     buying_power: acc.buying_power, last_equity: acc.last_equity };
-    out.clock = await alp('/v2/clock');
-    out.positions = (await alp('/v2/positions')).map(p => ({
+    out.clock = clock;
+    out.positions = positions.map(p => ({
       symbol: p.symbol, qty: p.qty, avg_entry_price: p.avg_entry_price,
       current_price: p.current_price, market_value: p.market_value,
       unrealized_pl: p.unrealized_pl, unrealized_plpc: p.unrealized_plpc }));
-    out.orders = (await alp('/v2/orders', { status: 'all', limit: 30, direction: 'desc' })).map(o => ({
+    out.orders = orders.map(o => ({
       symbol: o.symbol, side: o.side, qty: o.qty, type: o.type, status: o.status,
       limit_price: o.limit_price, filled_avg_price: o.filled_avg_price, submitted_at: o.submitted_at }));
-    const h = await alp('/v2/account/portfolio/history', { period: '1M', timeframe: '1D' });
     out.history = { t: h.timestamp || [], equity: h.equity || [] };
   } catch (e) {
     out.error = 'Alpaca indisponible'; // jamais le detail : il pourrait contenir des infos sensibles
@@ -167,7 +173,9 @@ module.exports = async (req, res) => {
     ok = same(dec.slice(0, i), user) && same(dec.slice(i + 1), pass);
   }
   if(!ok){
-    await new Promise(r => setTimeout(r, 1000)); // freine les essais
+    // Pause SEULEMENT si un mot de passe a ete envoye et refuse (freine les essais).
+    // La premiere demande, sans identifiants, repond tout de suite.
+    if(h) await new Promise(r => setTimeout(r, 1000));
     baseHeaders(res, 'text/plain; charset=utf-8');
     res.setHeader('WWW-Authenticate', 'Basic realm="Desk"');
     return res.status(401).send('Authentification requise');
