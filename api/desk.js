@@ -152,11 +152,16 @@ module.exports = async (req, res) => {
   const kUrl = (url.searchParams.get('k') || '').trim().toLowerCase();
   if(cle.length < 3 || !same(kUrl, cle)) return notFound(res);
 
+  // Deux modes :
+  //  - SANS DASH_USER ni DASH_PASS : l'adresse avec la cle est la seule protection (page en lecture
+  //    seule, compte Alpaca fictif). Aucune fenetre de mot de passe.
+  //  - AVEC DASH_USER et DASH_PASS (12 caracteres minimum) : mot de passe en plus.
+  const avecMdp = Boolean(user || pass);
+
   // Bonne cle mais configuration incomplete : on nomme la variable en cause (jamais de valeur).
-  // La cle est courte (ex. un prenom) : le VRAI verrou est le mot de passe, d'ou 12 caracteres minimum.
   const manque = [];
-  if(!user) manque.push('DASH_USER');
-  if(pass.length < 12) manque.push('DASH_PASS (12 caracteres minimum)');
+  if(avecMdp && !user) manque.push('DASH_USER');
+  if(avecMdp && pass.length < 12) manque.push('DASH_PASS (12 caracteres minimum)');
   if(!process.env.DESK_ALPACA_KEY) manque.push('DESK_ALPACA_KEY');
   if(!process.env.DESK_ALPACA_SECRET) manque.push('DESK_ALPACA_SECRET');
   if(manque.length){
@@ -164,21 +169,21 @@ module.exports = async (req, res) => {
     return res.status(503).send('Configuration incomplete : ' + manque.join(', '));
   }
 
-  // Mot de passe obligatoire (Basic).
-  const h = req.headers.authorization || '';
-  let ok = false;
-  if(h.startsWith('Basic ')){
-    const dec = Buffer.from(h.slice(6), 'base64').toString('utf8');
-    const i = dec.indexOf(':');
-    ok = same(dec.slice(0, i), user) && same(dec.slice(i + 1), pass);
-  }
-  if(!ok){
-    // Pause SEULEMENT si un mot de passe a ete envoye et refuse (freine les essais).
-    // La premiere demande, sans identifiants, repond tout de suite.
-    if(h) await new Promise(r => setTimeout(r, 1000));
-    baseHeaders(res, 'text/plain; charset=utf-8');
-    res.setHeader('WWW-Authenticate', 'Basic realm="Desk"');
-    return res.status(401).send('Authentification requise');
+  if(avecMdp){
+    const h = req.headers.authorization || '';
+    let ok = false;
+    if(h.startsWith('Basic ')){
+      const dec = Buffer.from(h.slice(6), 'base64').toString('utf8');
+      const i = dec.indexOf(':');
+      ok = same(dec.slice(0, i), user) && same(dec.slice(i + 1), pass);
+    }
+    if(!ok){
+      // Pause SEULEMENT si un mot de passe a ete envoye et refuse (freine les essais).
+      if(h) await new Promise(r => setTimeout(r, 1000));
+      baseHeaders(res, 'text/plain; charset=utf-8');
+      res.setHeader('WWW-Authenticate', 'Basic realm="Desk"');
+      return res.status(401).send('Authentification requise');
+    }
   }
 
   if(url.searchParams.get('d') === '1'){
